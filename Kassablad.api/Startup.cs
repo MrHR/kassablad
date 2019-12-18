@@ -41,7 +41,7 @@ namespace Kassablad.api
             services.AddControllers();
 
             //Identityserver code
-            services.AddDefaultIdentity<ApplicationUser>()
+            services.AddDefaultIdentity<User>()
                 .AddEntityFrameworkStores<KassabladContext>();
 
             services.Configure<IdentityOptions>(options =>
@@ -97,6 +97,7 @@ namespace Kassablad.api
 
             app.UseAuthentication();
             app.UseAuthorization();
+            //app.UseIdentityServer();
 
             app.UseEndpoints(endpoints =>
             {

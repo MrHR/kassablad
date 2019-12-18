@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <title>This is the title of the webpage!</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="semantic/semantic.min.css" />
+    <script src="./js/script.js"></script>
+    <!-- <script src="./semantic/semantic.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <div id="formWrapper_01" class="form">
+            <button id="btnStart" class="ui button btnNext" onclick="jKassablad.nextFormField(event)">Start Dronken Avontuur</button>
+        </div>
+
+        <!--Naam tapper-->
+        <div id="formWrapper_02" class="form" style="display: none;">
+            <h2>Vul je naam in</h2>
+            <form id="form_01" method="POST">
+                <div class="ui input">
+                    <input type="text" name="NaamTapper" placeholder="Naam Tapper" />
+                </div>
+                <button type="button" id="btnNext_02" class="ui button btnNext frmButton" onclick="jKassablad.createKassaContainer(event)">Tel Ducaten in de Schatkist</button>
+            </form>
+        </div>
+
+        <!--Begin Kassa-->
+        <div id="formWrapper_03" class="form" style="display: none;">
+            <h2>Tel ducaten in schatkist</h2>
+            <form id="form_02">
+                <div class="ui input">
+                    <input type="text" name="kassablad" placeholder="Kassablad" />
+                </div>
+                <button type="button" id="btnNext_03" class="ui button btnNext frmButton" onclick="jKassablad.nextFormField(event)">Ducaten Geteld</button>
+            </form>
+        </div>
+
+        <!--Consumpties-->
+        <div id="formWrapper_04" class="form" style="display: none;">
+            <h2>Tel je geconsumeerde brouwsels</h2>
+            <form id="form_03">
+                <div class="ui input">
+                    <input type="text" name="Consumptieblad" placeholder="Consumptie Tappers" />
+                </div>
+                <button type="button" id="btnNext_04" class="ui button btnNext frmButton" onclick="jKassablad.nextFormField(event)">Tel Verdiende Ducaten in de Schatkist</button>
+            </form>
+        </div>
+
+        <!--Eind Kassa-->
+        <div id="formWrapper_05" class="form" style="display: none;">
+            <h2>Tel je verdiende ducaten</h2>
+            <form id="form_04">
+                <div class="ui input">
+                    <input type="text" name="EindKassa" placeholder="Eindkassa" />
+                </div>
+                <button type="button" id="btnNext_05" class="ui button btnNext frmButton" onclick="jKassablad.nextFormField(event)">Einde Dronken Avontuur</button>
+            </form>
+        </div>
+    </div>
+  </body>
+</html>
+<script>
+    jKassablad.InitKassa();
+</script>

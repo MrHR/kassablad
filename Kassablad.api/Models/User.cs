@@ -1,8 +1,9 @@
-namespace Kassablad.api.Models {
-    using System;
-    
-    public class User {
-        public int Id { get; set; }
+using System;
+using Microsoft.AspNetCore.Identity;
+
+namespace Kassablad.api.Models {    
+    public class User : IdentityUser {
+        // public int Id { get; set; }
         public bool Active { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime DateUpdated { get; set; }

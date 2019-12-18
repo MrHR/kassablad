@@ -1,0 +1,48 @@
+html, body, div, section {
+    padding:0;
+    margin:0;
+}
+
+.container {
+    width: 100%;
+    background-color:rgb(218, 224, 219);
+    min-height: 100vh;
+    padding-top:50px;
+}
+
+.form {
+    min-width:30%;
+    max-width:60%;
+    display: block;
+    padding:30px;
+    margin: auto;
+    background-color:white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgba(49, 49, 49, 0.507);  
+}
+
+.button {
+    /* border: solid 1px #e0e1e2 !important; */
+}
+
+.button:hover {
+    background-color:rgb(53, 92, 70) !important;
+    color:rgb(212,175,55) !important;
+    /* border:solid 1px rgb(212,175,55) !important; */
+}
+
+.form .input, .form button {
+    display:block !important;
+    margin:10px 0;
+    width:100%;
+}
+
+.form .input input { 
+    width:100%;
+}
+
+#btnStart {
+    display:block;
+    margin:auto;
+    width:100%;
+}
