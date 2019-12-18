@@ -46,3 +46,8 @@ html, body, div, section {
     margin:auto;
     width:100%;
 }
+
+#consumptieTabel input {
+    border-style: none;
+    outline: none;
+}

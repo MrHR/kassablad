@@ -1,13 +1,43 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <title>This is the title of the webpage!</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="semantic/semantic.min.css" />
     <script src="./js/script.js"></script>
     <!-- <script src="./semantic/semantic.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  </head>
+    <script type="text/javascript">
+        $(function () {
+            $('.pnm, .price, .subtot, .grdtot').prop('readonly', true);
+            var $tblrows = $("#tblProducts tbody tr");
+
+            $tblrows.each(function (index) {
+                var $tblrow = $(this);
+
+                $tblrow.find('.qty').on('change', function () {
+
+                    var qty = $tblrow.find("[name=qty]").val();
+                    var price = $tblrow.find("[name=price]").val();
+                    var subTotal = parseInt(qty, 10) * parseFloat(price);
+
+                    if (!isNaN(subTotal)) {
+
+                        $tblrow.find('.subtot').val(subTotal.toFixed(2));
+                        var grandTotal = 0;
+
+                        $(".subtot").each(function () {
+                            var stval = parseFloat($(this).val());
+                            grandTotal += isNaN(stval) ? 0 : stval;
+                        });
+
+                        $('.grdtot').val(grandTotal.toFixed(2));
+                    }
+                });
+            });
+        });
+    </script>
+</head>
   <body>
     <div class="container">
         <div id="formWrapper_01" class="form">
@@ -32,6 +62,107 @@
                 <div class="ui input">
                     <input type="text" name="kassablad" placeholder="Kassablad" />
                 </div>
+                
+
+                <table id="tblProducts">
+                    <thead>
+                        <tr>
+                            <td>beginkassa</td>
+                            <td>aantal</td>
+                            <td>waarde</td>
+                            <td>totaal</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="pnm" value="100 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="100" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="50 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="50" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="20 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="20" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="10 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="10" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="5 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="5" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="2 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="2" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="1 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="1" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.50 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="0.50" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.20 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="0.20" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.10 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="0.10" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.05 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="0.05" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.02 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="0.02" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.01 euro" name="pnm" /></td>
+                            <td><input type="text" class="qty" value="" name="qty" /></td>
+                            <td><input type="text" class="price" value="0.01" name="price" /></td>
+                            <td><input type="text" class="subtot" value="0" name="subtot" /></td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="grdtot" value="" name="" /></td>
+                        </tr>
+                    </tfoot>
+                </table>
                 <button type="button" id="btnNext_03" class="ui button btnNext frmButton" onclick="jKassablad.nextFormField(event)">Ducaten Geteld</button>
             </form>
         </div>
@@ -43,6 +174,246 @@
                 <div class="ui input">
                     <input type="text" name="Consumptieblad" placeholder="Consumptie Tappers" />
                 </div>
+                <table id="consumptieTabel" class="ui red table">
+                    <thead>
+                        <tr>
+                            <th>Drinks</th>
+                            <th>aantal</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cola</td>
+                            <td class="border"><input type="number" id="Cola" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('Cola', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('Cola', -1)">-</button>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Cola zero</td>
+                            <td><input type="number" id="colaZero" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('colaZero', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('colaZero', -1)">-</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fanta</td>
+
+                            <td><input type="number" id="fanta" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('fanta', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('fanta', -1)">-</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ice Tea</td>
+                            <td><input type="number" id="iceTea" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('iceTea', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('iceTea', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Ice Tea Green</td>
+                            <td><input type="number" id="iceTeaGreen" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('iceTeaGreen', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('iceTeaGreen', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Ice Tea Peach</td>
+                            <td><input type="number" id="iceTeaPeach" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('iceTeaPeach', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('iceTeaPeach', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Plat water</td>
+                            <td><input type="number" id="platWater" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('platWater', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('platWater', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Bruis water</td>
+                            <td><input type="number" id="bruisWater" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('bruisWater', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('bruisWater', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Thee</td>
+                            <td><input type="number" id="thee" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('thee', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('thee', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Koffie</td>
+                            <td><input type="number" id="koffie" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('koffie', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('koffie', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Stella(flesje)</td>
+                            <td><input type="number" id="stellaFlesje" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('stellaFlesje', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('stellaFlesje', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Jupiler(vat)</td>
+                            <td><input type="number" id="jupilerVat" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('jupilerVat', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('jupilerVat', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Kriek</td>
+                            <td><input type="number" id="kriek" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('kriek', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('kriek', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Vedett</td>
+                            
+                            <td><input type="number" id="vedett" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('vedett', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('vedett', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Chouffe</td>
+                            <td><input type="number" id="chouffe" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('chouffe', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('chouffe', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Chouffe Cherry</td>
+                            <td><input type="number" id="chouffeCherry" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('chouffeCherry', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('chouffeCherry', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Duvel</td>
+                            <td><input type="number" id="duvel" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('duvel', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('duvel', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Desperados</td>
+                            <td><input type="number" id="desperados" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('desperados', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('desperados', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Witte wijn</td>
+                            <td><input type="number" id="witteWijn" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('witteWijn', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('witteWijn', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Rode wijn</td>
+                            <td><input type="number" id="rodeWijn" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('rodeWijn', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('rodeWijn', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Rosé wijn</td>
+                            <td><input type="number" id="roséWijn" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('roséWijn', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('roséWijn', -1)">-</button>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+                <table id="consumptieTabel" class="ui orange table">
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>aantal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Droge worst</td>
+                            <td><input type="number" id="drogeWorst" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('drogeWorst', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('drogeWorst', -1)">-</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>chips</td>
+                            <td><input type="number" id="chips" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('chips', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('chips', -1)">-</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Soep</td>
+                            <td><input type="number" id="soep" value="0" min="0" readonly /></td>
+                            <td>
+                                <button type="button" class="positive ui button" onclick="buttonClick('soep', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('soep', -1)">-</button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
                 <button type="button" id="btnNext_04" class="ui button btnNext frmButton" onclick="jKassablad.nextFormField(event)">Tel Verdiende Ducaten in de Schatkist</button>
             </form>
         </div>

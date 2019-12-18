@@ -51,3 +51,12 @@ var jKassablad = {
         return result;
     }
 }
+
+function buttonClick(Id, value) {
+    //console.log(document.getElementById(Id).value);
+    var i = parseInt(document.getElementById(Id).value);
+    if ((i >= 0 && value > 0) || i > 0) {
+        i += value;
+    }
+    document.getElementById(Id).value = i;
+}
