@@ -51,3 +51,7 @@ html, body, div, section {
     border-style: none;
     outline: none;
 }
+#tblProducts input{
+    border-style: none;
+    outline: none;
+}
