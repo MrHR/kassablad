@@ -51,7 +51,7 @@ html, body, div, section {
     border-style: none;
     outline: none;
 }
-#tblProducts input{
+.price,.pnm,.subtot{
     border-style: none;
     outline: none;
 }
