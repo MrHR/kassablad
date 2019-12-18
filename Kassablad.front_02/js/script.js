@@ -12,26 +12,12 @@ var jKassablad = {
     },
 
     createKassaContainer: function(event) {
-
         jKassablad.nextFormField(event);
-
-        var data = new FormData(document.querySelector('#form_01'));
-        // data.append('Active', true);
-        // data.append('DateAdded', null);
-        // data.append('DateUpdated', null);
-        // data.append('UpdatedBy', 1);
-        // data.append('CreatedBy', 1);
-        // data.append('BeginUur', null);
-        // data.append('EindUur', null);
-        // data.append('Notes', null);
-        // data.append('NaamTapperSluit', '');
-        // data.append('Bezoekers', 0);
-        // data.append('Afroomkluis', 0);
-        // data.append('InkomstBar', 0);
-        // data.append('InkomstLidkaart', 0);
-
         jKassablad.sendData($('#form_01').serialize(), 'https://localhost:5001/api/kassacontainer');
-        //jKassablad.sendData(data, 'https://localhost:5001/api/kassacontainer');
+    },
+
+    createBeginKassa: function () {
+        
     },
 
     sendData: function (formData, url) {
