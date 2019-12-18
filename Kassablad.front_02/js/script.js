@@ -1,4 +1,5 @@
 var jKassablad = {
+    kassaContainer: null,
     InitKassa: function () {
         //document.querySelector('.btnNext').addEventListener('click', jKassablad.nextFormField);
     },
@@ -15,33 +16,40 @@ var jKassablad = {
         jKassablad.nextFormField(event);
 
         var data = new FormData(document.querySelector('#form_01'));
-        data.append('Active', true);
-        data.append('DateAdded', null);
-        data.append('DateUpdated', null);
-        data.append('UpdatedBy', 1);
-        data.append('CreatedBy', 1);
-        data.append('BeginUur', null);
-        data.append('EindUur', null);
-        data.append('Notes', null);
-        data.append('NaamTapperSluit', '');
-        data.append('Bezoekers', 0);
-        data.append('Afroomkluis', 0);
-        data.append('InkomstBar', 0);
-        data.append('InkomstLidkaart', 0);
+        // data.append('Active', true);
+        // data.append('DateAdded', null);
+        // data.append('DateUpdated', null);
+        // data.append('UpdatedBy', 1);
+        // data.append('CreatedBy', 1);
+        // data.append('BeginUur', null);
+        // data.append('EindUur', null);
+        // data.append('Notes', null);
+        // data.append('NaamTapperSluit', '');
+        // data.append('Bezoekers', 0);
+        // data.append('Afroomkluis', 0);
+        // data.append('InkomstBar', 0);
+        // data.append('InkomstLidkaart', 0);
 
-        jKassablad.sendData(data, 'https://localhost:5001/api/kassacontainer');
+        jKassablad.sendData($('#form_01').serialize(), 'https://localhost:5001/api/kassacontainer');
+        //jKassablad.sendData(data, 'https://localhost:5001/api/kassacontainer');
     },
 
     sendData: function (formData, url) {
+        console.log(formData);
         var result = $.ajax({
             url: url,
             type: 'POST',
-            //dataType: 'json',
             // processData: false,
             // contentType: false,
+            datatype: 'json',
             data: formData,
-            done: function (response) {
-                console.log('success', response);
+            success: function (data, response) {
+                if(response == "success") {
+                    jKassablad.kassaContainer = data;
+                    console.log(jKassablad.kassaContainer);
+                } else {
+                    console.log(response);
+                }
             },
             fail: function () { 
                 console.log('fail');
