@@ -47,11 +47,9 @@ html, body, div, section {
     width:100%;
 }
 
-#consumptieTabel input {
+
+.price,.pnm,.subtot{
     border-style: none;
     outline: none;
 }
-#tblProducts input{
-    border-style: none;
-    outline: none;
-}
+
