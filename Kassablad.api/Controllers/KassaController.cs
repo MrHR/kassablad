@@ -78,7 +78,7 @@ namespace Kassablad.api.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Kassa>> PostKassa(Kassa kassa)
+        public async Task<ActionResult<Kassa>> PostKassa([FromForm]Kassa kassa)
         {
             _context.Kassa.Add(kassa);
             await _context.SaveChangesAsync();

@@ -1,7 +1,7 @@
 var jKassablad = {
     kassaContainer: null,
+    beginKassa: null,
     InitKassa: function () {
-        //document.querySelector('.btnNext').addEventListener('click', jKassablad.nextFormField);
     },
 
     nextFormField: function (event) { 
@@ -12,34 +12,34 @@ var jKassablad = {
     },
 
     createKassaContainer: function(event) {
-        jKassablad.nextFormField(event);
-        jKassablad.sendData($('#form_01').serialize(), 'https://localhost:5001/api/kassacontainer');
+        var result = jKassablad.sendData($('#form_01').serialize(), 'https://localhost:5001/api/kassacontainer', 'POST');
+        result.done(function (data) {
+            console.log('success kascontainer', data);
+            jKassablad.kassaContainer = data;
+            jKassablad.nextFormField(event);
+        }).fail(function(error) {
+            console.log('fail kascontainer', error);
+        });
     },
 
-    createBeginKassa: function () {
-        
+    createBeginKassa: function (event) {
+        var result = jKassablad.sendData($('#form_02').serialize(), 'https://localhost:5001/api/kassa', 'POST');
+        result.done(function (data) {
+            console.log('success kassa', data);
+            jKassablad.beginKassa = data;
+            jKassablad.nextFormField(event);
+        }).fail(function(errorObj, errormsg, msg) {
+            console.log('fail kassa', msg);
+        });
     },
 
-    sendData: function (formData, url) {
-        console.log(formData);
+    sendData: function (formData, url, type) {
+        console.log('formdata:' + formData);
         var result = $.ajax({
             url: url,
-            type: 'POST',
-            // processData: false,
-            // contentType: false,
+            type: type,
             datatype: 'json',
-            data: formData,
-            success: function (data, response) {
-                if(response == "success") {
-                    jKassablad.kassaContainer = data;
-                    console.log(jKassablad.kassaContainer);
-                } else {
-                    console.log(response);
-                }
-            },
-            fail: function () { 
-                console.log('fail');
-            }
+            data: formData
         });
 
         return result;
