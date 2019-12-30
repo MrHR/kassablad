@@ -13,7 +13,7 @@ var jKassablad = {
 
     createKassaContainer: function(event) {
         let data = $('#form_01').serialize();
-        const result = jKassablad.sendData(data, 'https://localhost:5001/api/kassacontainer', 'POST');
+        const result = jData.sendData(data, 'https://localhost:5001/api/kassacontainer', 'POST');
 
         result.done(function (data) {
             console.log('success kascontainer', data);
@@ -30,15 +30,65 @@ var jKassablad = {
         + "&Type=BeginKassa"
         + "&NaamTapper=" + jKassablad.kassaContainer.NaamTapper;
         
-        const result = jKassablad.sendData(data, 'https://localhost:5001/api/kassa', 'POST');
+        const result = jData.sendData(data, 'https://localhost:5001/api/kassa', 'POST');
 
         result.done(function (data) {
             console.log('success kassa', data);
             jKassablad.beginKassa = data;
+            jConsumpties.fillConsumpties();
             jKassablad.nextFormField(event);
         }).fail(function(errorObj, errormsg, msg) {
             console.log('fail kassa', msg);
         });
+    },
+
+    
+}
+
+var jConsumpties = {
+    consumpties: null,
+    fillConsumpties: function () {
+        var result = jData.getData('https://localhost:5001/api/Consumptie');
+
+        result.done(function (data) {
+            //console.log('get data success: ' + JSON.stringify(data));
+            jConsumpties.consumpties = data;
+            jConsumpties.createConsumpties();
+        }).fail(function (errorObj, errormsg, msg) {
+            console.log('fail get data', msg);
+        });
+    },
+
+    createConsumpties: function () {
+        var consumptieTabel = $('#consumptieTabel');
+        var html = '';
+        $.map(jConsumpties.consumpties, function (consumptie, id) {
+            var el = `<tr>
+                        <td>${consumptie.naam}</td>
+                        <td class="border"><input type="number" id="${consumptie.naam}" value="0" min="0" prijs="${consumptie.prijs}" readonly /></td>
+                        <td>
+                            <button type="button" class="positive ui button" id="buttonUp${consumptie.naam}" onclick="buttonClick('${consumptie.naam}}', +1)">+</button>
+                            <button type="button" class="negative ui button" id="buttonUp${consumptie.naam}" onclick="buttonClick('${consumptie.naam}', -1)">-</button>
+                        </td>
+                    </tr>`
+
+            consumptieTabel.append($(el));
+            
+        });
+
+        console.log('html: ' + html);
+        consumptieTabel.append($(html));
+    }
+};
+
+var jData = {
+    getData: function (url) {
+        var result = $.ajax({
+            url: url,
+            type: 'GET'
+        });
+
+        return result;
     },
 
     sendData: function (formData, url, type) {
@@ -52,13 +102,7 @@ var jKassablad = {
 
         return result;
     }
-}
-
-var consumpties = {
-    createConsumpties: function () {
-        
-    }
-};
+}; 
 
 function buttonClick(Id, value) {
     //console.log(document.getElementById(Id).value);
