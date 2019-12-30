@@ -7,38 +7,6 @@
     <script src="./js/script.js"></script>
     <!-- <script src="./semantic/semantic.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $('.pnm, .price, .subtot, .grdtot, .test').prop('readonly', true);
-            var $tblrows = $("#tblProducts tbody tr");
-
-            $tblrows.each(function (index) {
-                var $tblrow = $(this);
-
-                $tblrow.find('.qty').on('change', function () {
-
-                    var qty = $tblrow.find("[class=qty]").val();
-                    var price = $tblrow.find("[class=price]").val();
-                    var subTotal = parseInt(qty, 10) * parseFloat(price);
-                   
-
-                    if (!isNaN(subTotal)) {
-
-                        $tblrow.find('.subtot').val(subTotal.toFixed(2));
-                        var grandTotal = 0;
-
-
-                        $(".subtot").each(function () {
-                            var stval = parseFloat($(this).val());
-                            grandTotal += isNaN(stval) ? 0 : stval;
-                        });
-
-                        $('.grdtot').val(grandTotal.toFixed(2));
-                    }
-                });
-            });
-        });
-    </script>
 </head>
   <body>
     <div class="container">
@@ -359,11 +327,11 @@
 
                         </tr>
                         <tr>
-                            <td>Ros� wijn</td>
-                            <td><input type="number" id="ros�Wijn" value="0" min="0" readonly /></td>
+                            <td>Rosé wijn</td>
+                            <td><input type="number" id="roséWijn" value="0" min="0" readonly /></td>
                             <td>
-                                <button type="button" class="positive ui button" onclick="buttonClick('ros�Wijn', +1)">+</button>
-                                <button type="button" class="negative ui button" onclick="buttonClick('ros�Wijn', -1)">-</button>
+                                <button type="button" class="positive ui button" onclick="buttonClick('roséWijn', +1)">+</button>
+                                <button type="button" class="negative ui button" onclick="buttonClick('roséWijn', -1)">-</button>
                             </td>
 
                         </tr>
@@ -430,82 +398,82 @@
 
 
                         <tr>
-                            <td><input type="text" class="pnm" value="100 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="HonderdEuro" /></td>
-                            <td><input type="text" class="price" value="100" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="100 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="HonderdEuro" /></td>
+                            <td><input type="text" class="price2" value="100" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="50 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="VijftigEuro" /></td>
-                            <td><input type="text" class="price" value="50" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="50 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="VijftigEuro" /></td>
+                            <td><input type="text" class="price2" value="50" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="20 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="TwintigEuro" /></td>
-                            <td><input type="text" class="price" value="20" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="20 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="TwintigEuro" /></td>
+                            <td><input type="text" class="price2" value="20" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="10 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="TienEuro" /></td>
-                            <td><input type="text" class="price" value="10" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="10 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="TienEuro" /></td>
+                            <td><input type="text" class="price2" value="10" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="5 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="VijfEuro" /></td>
-                            <td><input type="text" class="price" value="5" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="5 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="VijfEuro" /></td>
+                            <td><input type="text" class="price2" value="5" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="2 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="TweeEuro" /></td>
-                            <td><input type="text" class="price" value="2" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="2 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="TweeEuro" /></td>
+                            <td><input type="text" class="price2" value="2" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="1 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="EenEuro" /></td>
-                            <td><input type="text" class="price" value="1" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="1 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="EenEuro" /></td>
+                            <td><input type="text" class="price2" value="1" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="0.50 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="VijftigCent" /></td>
-                            <td><input type="text" class="price" value="0.50" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="0.50 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="VijftigCent" /></td>
+                            <td><input type="text" class="price2" value="0.50" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="0.20 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="TwintigCent" /></td>
-                            <td><input type="text" class="price" value="0.20" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="0.20 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="TwintigCent" /></td>
+                            <td><input type="text" class="price2" value="0.20" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="0.10 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="TienCent" /></td>
-                            <td><input type="text" class="price" value="0.10" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="0.10 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="TienCent" /></td>
+                            <td><input type="text" class="price2" value="0.10" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="0.05 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="VijfCent" /></td>
-                            <td><input type="text" class="price" value="0.05" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="0.05 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="VijfCent" /></td>
+                            <td><input type="text" class="price2" value="0.05" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="0.02 euro" /></td>
-                            <td><input type="text" class="qty" value="" name="TweeCent" /></td>
-                            <td><input type="text" class="price" value="0.02" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="0.02 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="TweeCent" /></td>
+                            <td><input type="text" class="price2" value="0.02" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0"  tabindex="-1"/></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="pnm" value="0.01" /></td>
-                            <td><input type="text" class="qty" value="" name="EenCent" /></td>
-                            <td><input type="text" class="price" value="0.01" /></td>
-                            <td><input type="text" class="subtot" value="0" /></td>
+                            <td><input type="text" class="pnm2" value="0.01" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="" name="EenCent" /></td>
+                            <td><input type="text" class="price2" value="0.01" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
                         </tr>
 
                     </tbody>
@@ -513,14 +481,14 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><input type="text" class="price" value=" totaal" /></td>
-                            <td><input type="text" class="grdtot" value="" name="" /></td>
+                            <td><input type="text" class="price2" value=" totaal" tabindex="-1" /></td>
+                            <td><input type="text" class="grdtot2" value="" name="" tabindex="-1" /></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><input type="text" class="price" value=" totaal - beginkassa"/></td>
-                            <td><input type="text" class="test" value="" name="" /></td>
+                            <td><input type="text" class="price2" value=" totaal - beginkassa" tabindex="-1"/></td>
+                            <td><input type="text" class="eindtot" value="" name="" tabindex="-1" /></td>
                         </tr>
                     </tfoot>
                 </table>
@@ -530,6 +498,9 @@
     </div>
   </body>
 </html>
-<script>
-    jKassablad.InitKassa();
+
+<script type="text/javascript">
+    $(function () {
+        jKassaCalulations.calculateKassa();
+    });
 </script>
