@@ -80,6 +80,12 @@ namespace Kassablad.api.Controllers
         [HttpPost]
         public async Task<ActionResult<Kassa>> PostKassa([FromForm]Kassa kassa)
         {
+            kassa.Active = true;
+            kassa.DateAdded = DateTime.UtcNow;
+            kassa.DateUpdated = DateTime.UtcNow;
+            kassa.UpdatedBy = 1; //TODO: chaneg user Id's in future to user
+            kassa.CreatedBy = 1;//TODO: chaneg user Id's in future to user
+
             _context.Kassa.Add(kassa);
             await _context.SaveChangesAsync();
 

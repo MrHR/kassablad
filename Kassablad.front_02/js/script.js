@@ -12,7 +12,9 @@ var jKassablad = {
     },
 
     createKassaContainer: function(event) {
-        var result = jKassablad.sendData($('#form_01').serialize(), 'https://localhost:5001/api/kassacontainer', 'POST');
+        let data = $('#form_01').serialize();
+        const result = jKassablad.sendData(data, 'https://localhost:5001/api/kassacontainer', 'POST');
+
         result.done(function (data) {
             console.log('success kascontainer', data);
             jKassablad.kassaContainer = data;
@@ -23,7 +25,13 @@ var jKassablad = {
     },
 
     createBeginKassa: function (event) {
-        var result = jKassablad.sendData($('#form_02').serialize(), 'https://localhost:5001/api/kassa', 'POST');
+        let data = $('#form_02').serialize();
+        data += "&KassaContainerId=" + jKassablad.kassaContainer.id
+        + "&Type=BeginKassa"
+        + "&NaamTapper=" + jKassablad.kassaContainer.NaamTapper;
+        
+        const result = jKassablad.sendData(data, 'https://localhost:5001/api/kassa', 'POST');
+
         result.done(function (data) {
             console.log('success kassa', data);
             jKassablad.beginKassa = data;
@@ -45,6 +53,12 @@ var jKassablad = {
         return result;
     }
 }
+
+var consumpties = {
+    createConsumpties: function () {
+        
+    }
+};
 
 function buttonClick(Id, value) {
     //console.log(document.getElementById(Id).value);
