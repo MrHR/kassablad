@@ -1,0 +1,1 @@
+run this command to run html on localhost: python -m SimpleHTTPServer

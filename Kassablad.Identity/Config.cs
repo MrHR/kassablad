@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
+using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
@@ -12,7 +12,8 @@ namespace Kassablad.Identity
         public static IEnumerable<IdentityResource> Ids =>
             new IdentityResource[]
             { 
-                new IdentityResources.OpenId()
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile()
             };
 
         public static IEnumerable<ApiResource> Apis =>
@@ -24,6 +25,7 @@ namespace Kassablad.Identity
         public static IEnumerable<Client> Clients =>
             new List<Client>
             { 
+                //machine to machine client
                 new Client
                 {
                     ClientId = "client",
@@ -39,6 +41,26 @@ namespace Kassablad.Identity
 
                     //scopes that client has access to
                     AllowedScopes = { "api1" }
+                },
+                //Javascript client
+                new Client
+                {
+                    ClientId = "front_02",
+                    ClientName = "Kassablad.front_02",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
+
+                    RedirectUris =           { "http://localhost:8000/callback.html" },
+                    PostLogoutRedirectUris = { "http://localhost:8000/index.html" },
+                    AllowedCorsOrigins =     { "http://localhost:8000" },
+
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
+                    }
                 }
             };
         
