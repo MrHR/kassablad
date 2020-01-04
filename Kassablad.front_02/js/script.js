@@ -61,6 +61,7 @@ var jConsumpties = {
     },
 
     createConsumpties: function () {
+        //Fetch 
         var consumptieTabel = $('#consumptieTabel');
         var html = '';
         $.map(jConsumpties.consumpties, function (consumptie, id) {
@@ -71,10 +72,19 @@ var jConsumpties = {
                             <button type="button" class="positive ui button" id="buttonUp${consumptie.naam}" onclick="buttonClick('${consumptie.naam}}', +1)">+</button>
                             <button type="button" class="negative ui button" id="buttonUp${consumptie.naam}" onclick="buttonClick('${consumptie.naam}', -1)">-</button>
                         </td>
-                    </tr>`
+                    </tr>`;
 
             consumptieTabel.append($(el));
-            
+
+            //Add onclick event plus one
+            $(`#buttonUp${consumptie.naam}`).on('click', function () {
+                buttonClick(`consumptie.naam`, +1);
+            });
+
+            //Add onclick event -1
+            $(`#buttonDown${consumptie.naam}`).on('click', function () {
+                buttonClick(`consumptie.naam`, -1);
+            });
         });
 
         console.log('html: ' + html);
@@ -170,7 +180,6 @@ var jKassaCalulations = {
         });
 
     }
-
 
 };
 
