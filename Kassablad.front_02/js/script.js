@@ -206,8 +206,9 @@ var jLogin = {
     mgr: null,
     init: function () {
         document.getElementById("btnStart").addEventListener("click", jLogin.login, false);
+        document.getElementById("login").addEventListener("click", jLogin.login, false);
         //document.getElementById("api").addEventListener("click", api, false);
-        //document.getElementById("logout").addEventListener("click", logout, false);
+        document.getElementById("logout").addEventListener("click", jLogin.logout, false);
 
         jLogin.config = {
             authority: "http://localhost:5000",
@@ -215,18 +216,20 @@ var jLogin = {
             redirect_uri: "http://localhost:8000/callback.html",
             response_type: "code",
             scope:"openid profile api1",
-            post_logout_redirect_uri : "http://localhost:8000/index.html",
+            post_logout_redirect_uri : "http://localhost:8000/kassablad.html",
         };
         jLogin.mgr = new Oidc.UserManager(jLogin.config);
-
-        console.log('mgr: ', jLogin.mgr);
 
         jLogin.mgr.getUser().then(function (user) {
             if (user) {
                 jLogin.log("User logged in", user.profile);
+                document.getElementById('login').style.display = 'none';
+                document.getElementById('logout').style.display = 'block';
             }
             else {
                 jLogin.log("User not logged in");
+                document.getElementById('login').style.display = 'block';
+                document.getElementById('logout').style.display = 'none';
             }
         });
     },
@@ -268,7 +271,11 @@ var jLogin = {
     },
 
     logout: function () {
-        jLogin.mgr.signoutRedirect();
+        jLogin.mgr.getUser().then(function(user) {
+            if(user) {
+                jLogin.mgr.signoutRedirect();
+            }
+        });
     }
 };
 
