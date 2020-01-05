@@ -12,34 +12,38 @@ var jKassablad = {
     },
 
     createKassaContainer: function(event) {
-        let data = $('#form_01').serialize();
-        const result = jData.sendData(data, 'https://localhost:5001/api/kassacontainer', 'POST');
-
-        result.done(function (data) {
-            console.log('success kascontainer', data);
-            jKassablad.kassaContainer = data;
-            console.log("next form field");
-            jKassablad.nextFormField(event);
-        }).fail(function(error) {
-            console.log('fail kascontainer', error);
+        jLogin.mgr.getUser().then(function(user) {
+            let data = $('#form_01').serialize();
+            const result = jData.sendData(data, 'https://localhost:5001/api/kassacontainer', 'POST', user);
+    
+            result.done(function (data) {
+                console.log('success kascontainer', data);
+                jKassablad.kassaContainer = data;
+                console.log("next form field");
+                jKassablad.nextFormField(event);
+            }).fail(function(error) {
+                console.log('fail kascontainer', error);
+            });
         });
     },
 
     createBeginKassa: function (event) {
-        let data = $('#form_02').serialize();
-        data += "&KassaContainerId=" + jKassablad.kassaContainer.id
-        + "&Type=BeginKassa"
-        + "&NaamTapper=" + jKassablad.kassaContainer.NaamTapper;
-        
-        const result = jData.sendData(data, 'https://localhost:5001/api/kassa', 'POST');
+        jLogin.mgr.getUser().then(function(user) {
+            let data = $('#form_02').serialize();
+            data += "&KassaContainerId=" + jKassablad.kassaContainer.id
+            + "&Type=BeginKassa"
+            + "&NaamTapper=" + jKassablad.kassaContainer.NaamTapper;
+            
+            const result = jData.sendData(data, 'https://localhost:5001/api/kassa', 'POST', user);
 
-        result.done(function (data) {
-            console.log('success kassa ', data);
-            jKassablad.beginKassa = data;
-            jConsumpties.fillConsumpties();
-            jKassablad.nextFormField(event);
-        }).fail(function(errorObj, errormsg, msg) {
-            console.log('fail kassa ', msg);
+            result.done(function (data) {
+                console.log('success kassa ', data);
+                jKassablad.beginKassa = data;
+                jConsumpties.fillConsumpties();
+                jKassablad.nextFormField(event);
+            }).fail(function(errorObj, errormsg, msg) {
+                console.log('fail kassa ', msg);
+            });
         });
     },
 
@@ -49,14 +53,16 @@ var jKassablad = {
 var jConsumpties = {
     consumpties: null,
     fillConsumpties: function () {
-        var result = jData.getData('https://localhost:5001/api/Consumptie');
+        jLogin.mgr.getUser().then(function (user) {
+            var result = jData.getData('https://localhost:5001/api/Consumptie', user);
 
-        result.done(function (data) {
-            //console.log('get data success: ' + JSON.stringify(data));
-            jConsumpties.consumpties = data;
-            jConsumpties.createConsumpties();
-        }).fail(function (errorObj, errormsg, msg) {
-            console.log('fail get data', msg);
+            result.done(function (data) {
+                //console.log('get data success: ' + JSON.stringify(data));
+                jConsumpties.consumpties = data;
+                jConsumpties.createConsumpties();
+            }).fail(function (errorObj, errormsg, msg) {
+                console.log('fail get data', msg);
+            });
         });
     },
 
@@ -93,22 +99,28 @@ var jConsumpties = {
 };
 
 var jData = {
-    getData: function (url) {
-        var result = $.ajax({
+    getData: function (url, user) {
+        const result = $.ajax({
             url: url,
-            type: 'GET'
+            type: 'GET',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + user.access_token)
+            }
         });
 
         return result;
     },
 
-    sendData: function (formData, url, type) {
-        console.log('formdata: ' + formData);
-        var result = $.ajax({
+    sendData: function (formData, url, type, user) {
+        //console.log('formdata: ' + formData);
+        const result = $.ajax({
             url: url,
             type: type,
             datatype: 'json',
-            data: formData
+            data: formData,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + user.access_token)
+            }
         });
 
         return result;
@@ -186,6 +198,77 @@ var jKassaCalulations = {
 var consumpties = {
     createConsumpties: function () {
         
+    }
+};
+
+var jLogin = {
+    config: null,
+    mgr: null,
+    init: function () {
+        document.getElementById("btnStart").addEventListener("click", jLogin.login, false);
+        //document.getElementById("api").addEventListener("click", api, false);
+        //document.getElementById("logout").addEventListener("click", logout, false);
+
+        jLogin.config = {
+            authority: "http://localhost:5000",
+            client_id: "front_02",
+            redirect_uri: "http://localhost:8000/callback.html",
+            response_type: "code",
+            scope:"openid profile api1",
+            post_logout_redirect_uri : "http://localhost:8000/index.html",
+        };
+        jLogin.mgr = new Oidc.UserManager(jLogin.config);
+
+        console.log('mgr: ', jLogin.mgr);
+
+        jLogin.mgr.getUser().then(function (user) {
+            if (user) {
+                jLogin.log("User logged in", user.profile);
+            }
+            else {
+                jLogin.log("User not logged in");
+            }
+        });
+    },
+
+    log: function () {
+        //document.getElementById('results').innerText = '';
+
+        Array.prototype.forEach.call(arguments, function (msg) {
+            if (msg instanceof Error) {
+                msg = "Error: " + msg.message;
+            }
+            else if (typeof msg !== 'string') {
+                msg = JSON.stringify(msg, null, 2);
+            }
+            //document.getElementById('results').innerHTML += msg + '\r\n';
+        });
+    },
+
+    login: function () {
+        jLogin.mgr.getUser().then(function(user) {
+            if(!user) {
+                jLogin.mgr.signinRedirect();
+            }
+        });
+    },
+
+    api: function () {
+        jLogin.mgr.getUser().then(function (user) {
+            var url = "https://localhost:5001/identity";
+    
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+            xhr.onload = function () {
+                jLogin.log(xhr.status, JSON.parse(xhr.responseText));
+            }
+            xhr.setRequestHeader("Authorization", "Bearer " + user.access_token);
+            xhr.send();
+        });
+    },
+
+    logout: function () {
+        jLogin.mgr.signoutRedirect();
     }
 };
 

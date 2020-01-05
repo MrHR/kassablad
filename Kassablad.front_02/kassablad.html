@@ -2,13 +2,15 @@
 <html>
 <head>
     <title>This is the title of the webpage!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="semantic/semantic.min.css" />
-    <script src="./js/script.js"></script>
     <!-- <script src="./semantic/semantic.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
   <body>
+    <!--uncomment to see logging results from login-->
+    <!-- <pre id="results"></pre> -->
     <div class="container">
         <div id="formWrapper_01" class="form">
             <button id="btnStart" class="ui button btnNext" onclick="jKassablad.nextFormField(event)">Start Dronken Avontuur</button>
@@ -496,11 +498,16 @@
             </form>
         </div>
     </div>
+
+    <script src="./oidc-client/dist/oidc-client.js"></script>
+    <script src="./js/script.js"></script>
+
   </body>
 </html>
 
 <script type="text/javascript">
     $(function () {
+        jLogin.init();
         jKassaCalulations.calculateKassa();
     });
 </script>
