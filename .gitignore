@@ -3,3 +3,7 @@
 Kassablad.api/KassabladDatabase.db
 Kassablad.api/obj/Debug/netcoreapp3.1/Kassablad.api.csprojAssemblyReference.cache
 Kassablad.api/obj/Debug/netcoreapp3.1/Kassablad.api.csprojAssemblyReference.cache
+
+*.db
+
+*.dll

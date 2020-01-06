@@ -54,6 +54,8 @@ var jConsumpties = {
         jLogin.mgr.getUser().then(function (user) {
             var result = jData.getData('https://localhost:5001/api/Consumptie', user);
 
+            console.log('user ', user);
+
             result.done(function (data) {
                 //console.log('get data success: ' + JSON.stringify(data));
                 jConsumpties.consumpties = data;
@@ -73,25 +75,24 @@ var jConsumpties = {
                         <td>${consumptie.naam}</td>
                         <td class="border"><input type="number" id="${consumptie.naam}" value="0" min="0" prijs="${consumptie.prijs}" readonly /></td>
                         <td>
-                            <button type="button" class="positive ui button" id="buttonUp${consumptie.naam}" onclick="buttonClick('${consumptie.naam}}', +1)">+</button>
+                            <button type="button" class="positive ui button" id="buttonUp${consumptie.naam}" onclick="buttonClick('${consumptie.naam}', +1)">+</button>
                             <button type="button" class="negative ui button" id="buttonUp${consumptie.naam}" onclick="buttonClick('${consumptie.naam}', -1)">-</button>
                         </td>
                     </tr>`;
 
             consumptieTabel.append($(el));
 
-            //Add onclick event plus one
-            $(`#buttonUp${consumptie.naam}`).on('click', function () {
-                buttonClick(`consumptie.naam`, +1);
-            });
+            // //Add onclick event plus one
+            // $(`#buttonUp${consumptie.naam}`).on('click', function () {
+            //     buttonClick(`consumptie.naam`, +1);
+            // });
 
-            //Add onclick event -1
-            $(`#buttonDown${consumptie.naam}`).on('click', function () {
-                buttonClick(`consumptie.naam`, -1);
-            });
+            // //Add onclick event -1
+            // $(`#buttonDown${consumptie.naam}`).on('click', function () {
+            //     buttonClick(`consumptie.naam`, -1);
+            // });
         });
-
-        console.log('html: ' + html);
+        
         consumptieTabel.append($(html));
     }
 };
@@ -272,7 +273,7 @@ var jLogin = {
 };
 
 function buttonClick(Id, value) {
-    //console.log(document.getElementById(Id).value);
+    console.log('id: ' + Id);
     var i = parseInt(document.getElementById(Id).value);
     if ((i >= 0 && value > 0) || i > 0) {
         i += value;

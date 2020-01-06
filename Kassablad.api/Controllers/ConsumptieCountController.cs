@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Kassablad.api.Data;
 using Kassablad.api.Models;
 
@@ -12,6 +13,7 @@ namespace Kassablad.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ConsumptieCountController : ControllerBase
     {
         private readonly KassabladContext _context;
