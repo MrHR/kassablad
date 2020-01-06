@@ -46,8 +46,6 @@ var jKassablad = {
             });
         });
     },
-
-    
 }
 
 var jConsumpties = {
