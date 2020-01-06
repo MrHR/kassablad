@@ -145,7 +145,7 @@ var jKassaCalulations = {
         $tblrows.each(function (index) {
             var $tblrow = $(this);
 
-            $tblrow.find('.qty').on('change', function () {
+            $tblrow.find('.qty, .qty2').on('change', function () {
 
                 var qty = $tblrow.find("[class=qty]").val();
                 var qty2 = $tblrow.find("[class=qty2]").val();
@@ -173,7 +173,7 @@ var jKassaCalulations = {
                 }
                 if (!isNaN(subTotal2)) {
 
-                    $tblrow.find('.subtot').val(subTotal2.toFixed(2));
+                    $tblrow.find('.subtot2').val(subTotal2.toFixed(2));
                     var grandTotal2 = 0;
 
 
@@ -185,7 +185,7 @@ var jKassaCalulations = {
                     });
 
                     $('.grdtot2').val(grandTotal2.toFixed(2));
-                    $('.eindtot').val()
+                    $('.eindtot').val(jKassaCalulations.subtot2 - jKassaCalulations.subtot);
 
                 }
             });
