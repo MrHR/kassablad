@@ -35,6 +35,8 @@ mgr.getUser().then(function (user) {
     }
 });
 
+console.log('logout', mgr);
+
 function login() {
     mgr.signinRedirect();
 }

@@ -232,6 +232,8 @@ var jLogin = {
                 document.getElementById('logout').style.display = 'none';
             }
         });
+
+        console.log('logout ', jLogin.mgr);
     },
 
     log: function () {

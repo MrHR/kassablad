@@ -52,7 +52,7 @@ namespace Kassablad.Identity
                     RequireClientSecret = false,
 
                     RedirectUris =           { "http://localhost:8000/callback.html" },
-                    PostLogoutRedirectUris = { "http://localhost:8000/index.html" },
+                    PostLogoutRedirectUris = { "http://localhost:8000/kassablad.html" },
                     AllowedCorsOrigins =     { "http://localhost:8000" },
 
                     AllowedScopes =
