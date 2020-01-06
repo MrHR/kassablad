@@ -126,15 +126,7 @@ var jData = {
 }; 
 
 var jKassaCalulations = {
-    pnm: null,
-    pnm2: null,
-    price: null,
-    price2: null,
-    subtot: null,
-    subtot2: null,
-    grdtot: null,
-    grdtot2: null,
-    eindtot: null,
+    grandTotal: null,
 
     calculateKassa: function () {
         $('.pnm, .pnm2, .price, .price2, .subtot, .subtot2, .grdtot, .grdtot2').prop('readonly', true);
@@ -156,17 +148,17 @@ var jKassaCalulations = {
                 if (!isNaN(subTotal)) {
 
                     $tblrow.find('.subtot').val(subTotal.toFixed(2));
-                    var grandTotal = 0;
+                    jKassaCalulations.grandTotal = 0;
                    
 
 
                     $(".subtot").each(function () {
                         var stval = parseFloat($(this).val());
-                        grandTotal += isNaN(stval) ? 0 : stval;
+                        jKassaCalulations.grandTotal += isNaN(stval) ? 0 : stval;
                         
                     });
 
-                    $('.grdtot').val(grandTotal.toFixed(2));
+                    $('.grdtot').val(jKassaCalulations.grandTotal.toFixed(2));
                     
                 }
                 if (!isNaN(subTotal2)) {
@@ -183,7 +175,7 @@ var jKassaCalulations = {
                     });
 
                     $('.grdtot2').val(grandTotal2.toFixed(2));
-                    $('.eindtot').val(jKassaCalulations.subtot2 - jKassaCalulations.subtot);
+                    $('.eindtot').val(grandTotal2 - jKassaCalulations.grandTotal);
 
                 }
             });
