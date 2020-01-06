@@ -47,7 +47,7 @@ html, body, div, section {
     width:100%;
 }
 
-.price,.pnm,.subtot{
+.price,.pnm,.subtot, .price2, .pnm2, .subtot2{
     border-style: none;
     outline: none;
 }

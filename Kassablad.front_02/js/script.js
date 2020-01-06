@@ -129,7 +129,7 @@ var jKassaCalulations = {
     grandTotal: null,
 
     calculateKassa: function () {
-        $('.pnm, .pnm2, .price, .price2, .subtot, .subtot2, .grdtot, .grdtot2').prop('readonly', true);
+        $('.pnm, .pnm2, .price, .price2, .subtot, .subtot2, .grdtot, .grdtot2, .eindtot').prop('readonly', true);
         var $tblrows = $("#tblProducts tbody tr");
 
         $tblrows.each(function (index) {
