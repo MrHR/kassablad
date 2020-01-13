@@ -11,7 +11,8 @@ var jKassablad = {
         btnNext.closest('.form').nextElementSibling.style.display = 'block';
     },
 
-    createKassaContainer: function(event) {
+    createKassaContainer: function (event) {
+        
         jLogin.mgr.getUser().then(function(user) {
             let data = $('#form_01').serialize();
             const result = jData.sendData(data, 'https://localhost:5001/api/kassacontainer', 'POST', user);
@@ -54,8 +55,6 @@ var jConsumpties = {
         jLogin.mgr.getUser().then(function (user) {
             var result = jData.getData('https://localhost:5001/api/Consumptie', user);
 
-            console.log('user ', user);
-
             result.done(function (data) {
                 //console.log('get data success: ' + JSON.stringify(data));
                 jConsumpties.consumpties = data;
@@ -69,7 +68,8 @@ var jConsumpties = {
     createConsumpties: function () {
         //Fetch 
         var consumptieTabel = $('#consumptieTabel');
-        var html = '';
+        var consumptieTabelEten = $('#consumptieTabelFood');
+
         $.map(jConsumpties.consumpties, function (consumptie, id) {
             var el = `<tr>
                         <td>${consumptie.naam}</td>
@@ -80,20 +80,18 @@ var jConsumpties = {
                         </td>
                     </tr>`;
 
-            consumptieTabel.append($(el));
-
-            // //Add onclick event plus one
-            // $(`#buttonUp${consumptie.naam}`).on('click', function () {
-            //     buttonClick(`consumptie.naam`, +1);
-            // });
-
-            // //Add onclick event -1
-            // $(`#buttonDown${consumptie.naam}`).on('click', function () {
-            //     buttonClick(`consumptie.naam`, -1);
-            // });
+            if(consumptie.type == 'Drank') {
+                consumptieTabel.append($(el));
+            } else if(consumptie.type = 'Eten') {
+                consumptieTabelEten.append($(el));
+            }
         });
-        
-        consumptieTabel.append($(html));
+    },
+
+    postConsumptieCount: function () {
+        jLogin.mgr.getUser().then(function (user) {
+            
+        });
     }
 };
 
@@ -109,6 +107,7 @@ var jData = {
             url: url,
             type: 'GET',
             beforeSend: function (xhr) {
+                console.log('user token ' + user.access_token);
                 xhr.setRequestHeader('Authorization', 'Bearer ' + user.access_token)
             }
         });
@@ -124,6 +123,7 @@ var jData = {
             datatype: 'json',
             data: formData,
             beforeSend: function (xhr) {
+                console.log('user token ' + user.access_token);
                 xhr.setRequestHeader('Authorization', 'Bearer ' + user.access_token)
             }
         });
@@ -190,12 +190,6 @@ var jKassaCalulations = {
 
     }
 
-};
-
-var consumpties = {
-    createConsumpties: function () {
-        
-    }
 };
 
 var jLogin = {
@@ -279,7 +273,7 @@ var jLogin = {
 };
 
 function buttonClick(Id, value) {
-    console.log('id: ' + Id);
+    // console.log('id: ' + Id);
     var i = parseInt(document.getElementById(Id).value);
     if ((i >= 0 && value > 0) || i > 0) {
         i += value;
