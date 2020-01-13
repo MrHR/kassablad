@@ -97,6 +97,12 @@ var jConsumpties = {
     }
 };
 
+createKassablad: function () {
+
+    var kassaBladen = $('#kassaBladen');
+
+}
+
 var jData = {
     getData: function (url, user) {
         const result = $.ajax({
@@ -280,3 +286,28 @@ function buttonClick(Id, value) {
     }
     document.getElementById(Id).value = i;
 }
+
+//datepicker
+$(function () {
+    $("#date").datepicker({ dateFormat: 'dd-mm-yy' });
+    $("#date").datepicker("setDate", new Date());
+});
+
+$('#date').on('input change', function () {
+    var thisDate;
+    thisDate = $("#date").datepicker('getDate');
+    var selectedWinnaars = [];
+    for (var i = 0; i < winnaarsDefault.length; i++) {
+        var parts = winnaarsDefault[i].datum.split('-');
+        var dateDb = new Date(parts[2], parts[1] - 1, parts[0]);
+
+        if ((new Date(thisDate).getTime() == new Date(dateDb).getTime())) {
+            selectedWinnaars.push(winnaarsDefault[i]);
+        }
+
+        else {
+        }
+    }
+    winnaars = selectedWinnaars;
+    vulTable();
+});
