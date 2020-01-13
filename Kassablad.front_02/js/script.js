@@ -95,11 +95,42 @@ var jConsumpties = {
     }
 };
 
-createKassablad: function () {
+//ophalen kassaContainers
 
-    var kassaBladen = $('#kassaBladen');
+var jKassaBlad = {
+    kassaContainers: null,
+    fillkassaBladList: function () {
+        jLogin.mgr.getUser().then(function (user) {
+            var result = jData.getData('https://localhost:5001/api/KassaContainer', user);
 
-}
+            result.done(function (data) {
+                console.log('get data success: ' + JSON.stringify(data));
+                jKassaBlad.kassaContainers = data;
+                jKassaBlad.createKassaBlad();
+            }).fail(function (errorObj, errormsg, msg) {
+                console.log('fail get data', msg);
+            });
+        });
+    },
+
+    createKassablad: function () {
+
+        var kassaBladen = $('#kassaContainers');
+
+        $.map(jKassaBlad.kassaContainers, function (KassaContainer, id) {
+            var el = `<tr>
+                        <td>${KassaContainer.NaamTapper}</td>
+                        <td>${KassaContainer.DateAdded}</td>
+                        <td>${KassaContainer.InkomstBar}</td>
+                    </tr>`;
+
+            kassaBladen.append($(el));
+            
+        });
+    },
+};
+
+
 
 var jData = {
     getData: function (url, user) {
@@ -196,7 +227,7 @@ var jLogin = {
     config: null,
     mgr: null,
     init: function () {
-        document.getElementById("btnStart").addEventListener("click", jLogin.login, false);
+        //document.getElementById("btnStart").addEventListener("click", jLogin.login, false);
         document.getElementById("login").addEventListener("click", jLogin.login, false);
         //document.getElementById("api").addEventListener("click", api, false);
         document.getElementById("logout").addEventListener("click", jLogin.logout, false);

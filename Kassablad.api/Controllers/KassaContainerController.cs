@@ -13,7 +13,7 @@ namespace Kassablad.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class KassaContainerController : ControllerBase
     {
         private readonly KassabladContext _context;

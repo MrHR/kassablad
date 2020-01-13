@@ -6,39 +6,38 @@
     <title></title>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="semantic/semantic.min.css" />
+    
 
 </head>
 <body>
 
+
     <p class="dateInput">Date: <input type="text" id="date"></p>
 
-    <table class="tableDesign">
+    <table id="kassaContainers" class="ui red table">
         <thead>
             <tr>
-                <th></th>
-                <th>
-                    <a href="#" title="selecteer op naam">name</a>
-                </th>
-                <th>
-                    <a href="#" title="selecteer op minimum aantal spelers">datum</a>
-                </th>
-                <th>
-                    <a href="#" title="selecteer op maximum aantal spelers">prijs</a>
-                </th>
+                <th>Tapper</th>
+                <th>Datum</th>
+                <th>Totaal</th>
             </tr>
         </thead>
         <tbody>
         </tbody>
     </table>
-    <ul id="kassaBladen">
-    
-    </ul>
 
 
 
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="./oidc-client/dist/oidc-client.js"></script>
+    <script src="./js/script_2.js"></script>
+    <script src="./js/moment.js"></script>
+
+    <script>
+        jKassaBlad.fillkassaBladList()
+    </script>
 
 </body>
 </html>
