@@ -11,7 +11,8 @@ var jKassablad = {
         btnNext.closest('.form').nextElementSibling.style.display = 'block';
     },
 
-    createKassaContainer: function(event) {
+    createKassaContainer: function (event) {
+        
         jLogin.mgr.getUser().then(function(user) {
             let data = $('#form_01').serialize();
             const result = jData.sendData(data, 'https://localhost:5001/api/kassacontainer', 'POST', user);
@@ -103,6 +104,7 @@ var jData = {
             url: url,
             type: 'GET',
             beforeSend: function (xhr) {
+                console.log('user token ' + user.access_token);
                 xhr.setRequestHeader('Authorization', 'Bearer ' + user.access_token)
             }
         });
@@ -118,6 +120,7 @@ var jData = {
             datatype: 'json',
             data: formData,
             beforeSend: function (xhr) {
+                console.log('user token ' + user.access_token);
                 xhr.setRequestHeader('Authorization', 'Bearer ' + user.access_token)
             }
         });
