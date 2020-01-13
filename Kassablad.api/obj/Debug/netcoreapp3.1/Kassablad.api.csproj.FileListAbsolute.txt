@@ -293,7 +293,6 @@ C:\Users\lukas\source\repos\kassablad\Kassablad.api\bin\Debug\netcoreapp3.1\runt
 C:\Users\lukas\source\repos\kassablad\Kassablad.api\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\lukas\source\repos\kassablad\Kassablad.api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\lukas\source\repos\kassablad\Kassablad.api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\lukas\source\repos\kassablad\Kassablad.api\obj\Debug\netcoreapp3.1\Kassablad.api.csprojAssemblyReference.cache
 C:\Users\lukas\source\repos\kassablad\Kassablad.api\obj\Debug\netcoreapp3.1\staticwebassets\Kassablad.api.StaticWebAssets.Manifest.cache
 C:\Users\lukas\source\repos\kassablad\Kassablad.api\obj\Debug\netcoreapp3.1\staticwebassets\Kassablad.api.StaticWebAssets.xml
 C:\Users\lukas\source\repos\kassablad\Kassablad.api\obj\Debug\netcoreapp3.1\Kassablad.api.MvcApplicationPartsAssemblyInfo.cs
@@ -304,3 +303,4 @@ C:\Users\lukas\source\repos\kassablad\Kassablad.api\obj\Debug\netcoreapp3.1\Kass
 C:\Users\lukas\source\repos\kassablad\Kassablad.api\obj\Debug\netcoreapp3.1\Kassablad.api.csproj.CopyComplete
 C:\Users\lukas\source\repos\kassablad\Kassablad.api\obj\Debug\netcoreapp3.1\Kassablad.api.dll
 C:\Users\lukas\source\repos\kassablad\Kassablad.api\obj\Debug\netcoreapp3.1\Kassablad.api.pdb
+C:\Users\lukas\source\repos\kassablad\Kassablad.api\obj\Debug\netcoreapp3.1\Kassablad.api.csprojAssemblyReference.cache
