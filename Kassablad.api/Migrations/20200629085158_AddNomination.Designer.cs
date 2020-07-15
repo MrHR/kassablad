@@ -3,14 +3,16 @@ using System;
 using Kassablad.api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Kassablad.api.Migrations
 {
     [DbContext(typeof(KassabladContext))]
-    partial class KassabladContextModelSnapshot : ModelSnapshot
+    [Migration("20200629085158_AddNomination")]
+    partial class AddNomination
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,9 +228,6 @@ namespace Kassablad.api.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateUpdated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Multiplier")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nomination")

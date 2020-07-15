@@ -10,15 +10,15 @@ var jKassablad = {
         btnNext.closest('.form').style.display = 'none';
         btnNext.closest('.form').nextElementSibling.style.display = 'block';
     },
-
+ 
     createKassaContainer: function(event) {
         jLogin.mgr.getUser().then(function(user) {
             let data = $('#form_01').serialize();
             const result = jData.sendData(data, 'https://localhost:5001/api/kassacontainer', 'POST', user);
     
             result.done(function (data) {
-                console.log('success kascontainer', data);
                 jKassablad.kassaContainer = data;
+                console.log('success kascontainer', jKassablad.kassaContainer);
                 console.log("next form field");
                 jKassablad.nextFormField(event);
             }).fail(function(error) {
@@ -72,10 +72,10 @@ var jConsumpties = {
         $.map(jConsumpties.consumpties, function (consumptie, id) {
             var el = `<tr>
                         <td>${consumptie.naam}</td>
-                        <td class="border"><input type="number" id="${consumptie.naam}" value="0" min="0" prijs="${consumptie.prijs}" readonly /></td>
+                        <td class="border"><input type="number" class="cCount" id="${consumptie.naam}" cId="${consumptie.id}" ccId="0" dateAdded="" createdBy="" value="0" min="0" prijs="${consumptie.prijs}" readonly /></td>
                         <td>
-                            <button type="button" class="positive ui button" id="buttonUp${consumptie.naam}" onclick="buttonClick('${consumptie.naam}', +1)">+</button>
-                            <button type="button" class="negative ui button" id="buttonUp${consumptie.naam}" onclick="buttonClick('${consumptie.naam}', -1)">-</button>
+                            <button type="button" class="positive ui button" id="buttonUp${consumptie.naam}" onclick="jConsumpties.postConsumptieCount('${consumptie.naam}', +1)">+</button>
+                            <button type="button" class="negative ui button" id="buttonUp${consumptie.naam}" onclick="jConsumpties.postConsumptieCount('${consumptie.naam}', -1)">-</button>
                         </td>
                     </tr>`;
 
@@ -87,9 +87,48 @@ var jConsumpties = {
         });
     },
 
-    postConsumptieCount: function () {
+    postConsumptieCount: function (Id, value) {
         jLogin.mgr.getUser().then(function (user) {
-            
+            //call buttonClick function to add or deduct value
+            buttonClick(Id, value);
+
+            var consumptieId = $(`#${Id}`).attr('cId');
+            var ccId = parseInt($(`#${Id}`).attr('ccId'));
+            var createdBy = $(`#${Id}`).attr('createdBy');
+            var dateAdded = $(`#${Id}`).attr('dateAdded');
+            var aantal = parseInt($(`#${Id}`).val());
+            var drink = {};
+
+            //Add values to drink object
+            drink['consumptieId'] = consumptieId;
+            drink['aantal'] = aantal;
+            drink['KassaContainerId'] = jKassablad.kassaContainer.id;
+            drink['user'] = user.Id;
+
+            console.log('drink ', drink);
+
+            //send data
+            var result = null;
+            //check if this drinkcount already exists
+            if(ccId === 0) { //if no then POST data
+                result = jData.sendData(drink, 'https://localhost:5001/api/ConsumptieCount', 'POST', user);
+            } else { //if yes then PUT data
+                drink['Id'] = ccId;
+                drink['CreatedBy'] = createdBy;
+                drink['DateAdded'] = dateAdded;
+                result = jData.sendData(drink, `https://localhost:5001/api/ConsumptieCount/${ccId}`, 'PUT', user);
+            }
+
+            //display result
+            result.done(function(result) {
+                if(result) { //if drinkCount POST'ed set id of drink
+                    $(`#${Id}`).attr('ccId', result.id);
+                    $(`#${Id}`).attr('createdBy', result.createdBy);
+                    $(`#${Id}`).attr('dateAdded', result.dateAdded);
+                }
+            }).fail(function () {
+                console.log('failed to save consumptionCount');
+            });    
         });
     }
 };

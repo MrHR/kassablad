@@ -48,12 +48,14 @@ namespace Kassablad.api.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutConsumptieCount(int id, ConsumptieCount consumptieCount)
+        public async Task<IActionResult> PutConsumptieCount(int id, [FromForm]ConsumptieCount consumptieCount)
         {
             if (id != consumptieCount.Id)
             {
                 return BadRequest();
             }
+
+            consumptieCount.DateUpdated = DateTime.UtcNow;
 
             _context.Entry(consumptieCount).State = EntityState.Modified;
 
@@ -80,8 +82,16 @@ namespace Kassablad.api.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<ConsumptieCount>> PostConsumptieCount(ConsumptieCount consumptieCount)
+        public async Task<ActionResult<ConsumptieCount>> PostConsumptieCount([FromForm]ConsumptieCount consumptieCount)
         {
+            consumptieCount.Active = true;
+            consumptieCount.DateAdded = DateTime.Now;
+            consumptieCount.DateUpdated = DateTime.UtcNow;
+            consumptieCount.CreatedBy = 1; //TODO: user user id instead
+            //Delete this shit (probably)
+            // consumptieCount.KassaContainerId = consumptieCount.KassaContainerId;
+            // consumptieCount.Aantal = consumptieCount.Aantal;
+
             _context.ConsumptieCount.Add(consumptieCount);
             await _context.SaveChangesAsync();
 

@@ -3,14 +3,16 @@ using System;
 using Kassablad.api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Kassablad.api.Migrations
 {
     [DbContext(typeof(KassabladContext))]
-    partial class KassabladContextModelSnapshot : ModelSnapshot
+    [Migration("20200706121003_AddMultiplierToNomination")]
+    partial class AddMultiplierToNomination
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
