@@ -20,11 +20,13 @@ namespace Kassablad.api.Data {
         }
 
         public DbSet<Kassablad.api.Models.User> User { get; set; }
-        public DbSet<Kassablad.api.Models. KassaContainer> KassaContainer { get; set; }
+        public DbSet<Kassablad.api.Models.KassaContainer> KassaContainer { get; set; }
         public DbSet<Kassablad.api.Models.Kassa> Kassa { get; set; }
         public DbSet<Kassablad.api.Models.Consumptie> Consumptie { get; set; }
         public DbSet<Kassablad.api.Models.ConsumptieCount> ConsumptieCount { get; set; }
         public DbSet<Kassablad.api.Models.Nominations> Nominations { get; set; }
+        public DbSet<Kassablad.api.Models.KassaNomination> KassaNomination { get; set; }
+        public DbSet<Kassablad.api.Models.KassaTemplate> KassaTemplate { get; set; }
 
     }
 }

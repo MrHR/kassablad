@@ -13,7 +13,7 @@ namespace Kassablad.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    // [Authorize]
     public class KassaContainerController : ControllerBase
     {
         private readonly KassabladContext _context;
@@ -80,14 +80,15 @@ namespace Kassablad.api.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<KassaContainer>> PostKassaContainer([FromForm]KassaContainer kassaContainer)
+        public async Task<ActionResult<KassaContainer>> PostKassaContainer(KassaContainer kassaContainer)
         {
             kassaContainer.Active = true;
             kassaContainer.DateUpdated = DateTime.UtcNow;
             kassaContainer.DateAdded = DateTime.UtcNow;
             kassaContainer.UpdatedBy = 1; //TODO: chaneg user Id's in future to user
             kassaContainer.CreatedBy = 1; //TODO: chaneg user Id's in future to user
-            kassaContainer.BeginUur = DateTime.UtcNow;
+            kassaContainer.BeginUur = kassaContainer.BeginUur;
+            kassaContainer.NaamTapper = kassaContainer.NaamTapper;
 
             _context.KassaContainer.Add(kassaContainer);
             await _context.SaveChangesAsync();

@@ -3,14 +3,16 @@ using System;
 using Kassablad.api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Kassablad.api.Migrations
 {
     [DbContext(typeof(KassabladContext))]
-    partial class KassabladContextModelSnapshot : ModelSnapshot
+    [Migration("20200715200557_addKassaNominationsTable")]
+    partial class addKassaNominationsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,35 +206,6 @@ namespace Kassablad.api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("KassaNomination");
-                });
-
-            modelBuilder.Entity("Kassablad.api.Models.KassaTemplate", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateUpdated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Nominations")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UpdatedBy")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("KassaTemplate");
                 });
 
             modelBuilder.Entity("Kassablad.api.Models.Nominations", b =>

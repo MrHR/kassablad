@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kassablad.api.Migrations
 {
     [DbContext(typeof(KassabladContext))]
-    [Migration("20200706121003_AddMultiplierToNomination")]
-    partial class AddMultiplierToNomination
+    [Migration("20200715195700_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -106,52 +106,13 @@ namespace Kassablad.api.Migrations
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("EenCent")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("EenEuro")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("HonderdEuro")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("KassaContainerId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TienCent")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TienEuro")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TweeCent")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TweeEuro")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TwintigCent")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TwintigEuro")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Type")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UpdatedBy")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("VijfCent")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("VijfEuro")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("VijftigCent")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("VijftigEuro")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");

@@ -59,20 +59,7 @@ namespace Kassablad.api.Migrations
             //         UpdatedBy = table.Column<int>(nullable: false),
             //         CreatedBy = table.Column<int>(nullable: false),
             //         KassaContainerId = table.Column<int>(nullable: false),
-            //         Type = table.Column<string>(nullable: true),
-            //         EenCent = table.Column<int>(nullable: false),
-            //         TweeCent = table.Column<int>(nullable: false),
-            //         VijfCent = table.Column<int>(nullable: false),
-            //         TienCent = table.Column<int>(nullable: false),
-            //         TwintigCent = table.Column<int>(nullable: false),
-            //         VijftigCent = table.Column<int>(nullable: false),
-            //         EenEuro = table.Column<int>(nullable: false),
-            //         TweeEuro = table.Column<int>(nullable: false),
-            //         VijfEuro = table.Column<int>(nullable: false),
-            //         TienEuro = table.Column<int>(nullable: false),
-            //         TwintigEuro = table.Column<int>(nullable: false),
-            //         VijftigEuro = table.Column<int>(nullable: false),
-            //         HonderdEuro = table.Column<int>(nullable: false)
+            //         Type = table.Column<string>(nullable: true)
             //     },
             //     constraints: table =>
             //     {
@@ -103,6 +90,25 @@ namespace Kassablad.api.Migrations
             //     constraints: table =>
             //     {
             //         table.PrimaryKey("PK_KassaContainer", x => x.Id);
+            //     });
+
+            // migrationBuilder.CreateTable(
+            //     name: "Nominations",
+            //     columns: table => new
+            //     {
+            //         Id = table.Column<int>(nullable: false)
+            //             .Annotation("Sqlite:Autoincrement", true),
+            //         Active = table.Column<bool>(nullable: false),
+            //         DateAdded = table.Column<DateTime>(nullable: false),
+            //         DateUpdated = table.Column<DateTime>(nullable: false),
+            //         UpdatedBy = table.Column<int>(nullable: false),
+            //         CreatedBy = table.Column<int>(nullable: false),
+            //         Nomination = table.Column<string>(nullable: true),
+            //         Multiplier = table.Column<decimal>(nullable: false)
+            //     },
+            //     constraints: table =>
+            //     {
+            //         table.PrimaryKey("PK_Nominations", x => x.Id);
             //     });
 
             // migrationBuilder.CreateTable(
@@ -148,6 +154,9 @@ namespace Kassablad.api.Migrations
 
             migrationBuilder.DropTable(
                 name: "KassaContainer");
+
+            migrationBuilder.DropTable(
+                name: "Nominations");
 
             migrationBuilder.DropTable(
                 name: "User");

@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Kassablad.api.Migrations
 {
-    public partial class AddNomination : Migration
+    public partial class addKassaTemplateTableTryAgain : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Nominations",
+                name: "KassaTemplate",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -18,18 +18,18 @@ namespace Kassablad.api.Migrations
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     UpdatedBy = table.Column<int>(nullable: false),
                     CreatedBy = table.Column<int>(nullable: false),
-                    Nomination = table.Column<string>(nullable: true)
+                    Nominations = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Nominations", x => x.Id);
+                    table.PrimaryKey("PK_KassaTemplate", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Nominations");
+                name: "KassaTemplate");
         }
     }
 }
