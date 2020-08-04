@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "${workspaceFolder:kassablad}/Kassablad.api/KassabladDatabase.db",
+            "driver": "SQLite",
+            "name": "kassabladDatabase",
+            "previewLimit": 50
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

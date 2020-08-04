@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Kassablad.Identity.csproj",
+  "FilePath": "c:\\Users\\ruben\\OneDrive\\Documents\\Code\\kassablad\\kassablad.auth\\kassablad.auth.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -9061,6 +9061,68 @@
       },
       {
         "Kind": "ITagHelper",
+        "Name": "Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ClientParametersTagHelper",
+        "AssemblyName": "Microsoft.AspNetCore.ApiAuthorization.IdentityServer",
+        "Documentation": "\n            <summary>\n            A tag helper for generating client parameters for a given oauth/openid client as data attributes.\n            </summary>\n        ",
+        "TagOutputHint": null,
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "*",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [
+              {
+                "Name": "asp-apiauth-parameters",
+                "NameComparison": 0,
+                "Value": null,
+                "ValueComparison": 0,
+                "Diagnostics": [],
+                "Metadata": {}
+              }
+            ],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "ITagHelper",
+            "Name": "asp-apiauth-parameters",
+            "TypeName": "System.String",
+            "IsEnum": false,
+            "IndexerNamePrefix": null,
+            "IndexerTypeName": null,
+            "Documentation": "\n            <summary>\n            Gets or sets the client id.\n            </summary>\n        ",
+            "Diagnostics": [],
+            "Metadata": {
+              "Common.PropertyName": "ClientId"
+            },
+            "BoundAttributeParameters": []
+          },
+          {
+            "Kind": "ITagHelper",
+            "Name": "view-context",
+            "TypeName": "Microsoft.AspNetCore.Mvc.Rendering.ViewContext",
+            "IsEnum": false,
+            "IndexerNamePrefix": null,
+            "IndexerTypeName": null,
+            "Documentation": "\n            <summary>\n            Gets or sets the ViewContext.\n            </summary>\n        ",
+            "Diagnostics": [],
+            "Metadata": {
+              "Common.PropertyName": "ViewContext"
+            },
+            "BoundAttributeParameters": []
+          }
+        ],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ClientParametersTagHelper"
+        }
+      },
+      {
+        "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.Razor",
         "Documentation": "\n            <summary>\n            <see cref=\"T:Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper\" /> implementation targeting elements containing attributes with URL expected values.\n            </summary>\n            <remarks>Resolves URLs starting with '~/' (relative to the application's 'webroot' setting) that are not\n            targeted by other <see cref=\"T:Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper\" />s. Runs prior to other <see cref=\"T:Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper\" />s to ensure\n            application-relative URLs are resolved.</remarks>\n        ",
@@ -12395,6 +12457,96 @@
         }
       },
       {
+        "Kind": "ITagHelper",
+        "Name": "Microsoft.AspNetCore.SpaServices.Prerendering.PrerenderTagHelper",
+        "AssemblyName": "Microsoft.AspNetCore.SpaServices",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "*",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [
+              {
+                "Name": "asp-prerender-module",
+                "NameComparison": 0,
+                "Value": null,
+                "ValueComparison": 0,
+                "Diagnostics": [],
+                "Metadata": {}
+              }
+            ],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "ITagHelper",
+            "Name": "asp-prerender-module",
+            "TypeName": "System.String",
+            "IsEnum": false,
+            "IndexerNamePrefix": null,
+            "IndexerTypeName": null,
+            "Documentation": null,
+            "Diagnostics": [],
+            "Metadata": {
+              "Common.PropertyName": "ModuleName"
+            },
+            "BoundAttributeParameters": []
+          },
+          {
+            "Kind": "ITagHelper",
+            "Name": "asp-prerender-export",
+            "TypeName": "System.String",
+            "IsEnum": false,
+            "IndexerNamePrefix": null,
+            "IndexerTypeName": null,
+            "Documentation": null,
+            "Diagnostics": [],
+            "Metadata": {
+              "Common.PropertyName": "ExportName"
+            },
+            "BoundAttributeParameters": []
+          },
+          {
+            "Kind": "ITagHelper",
+            "Name": "asp-prerender-data",
+            "TypeName": "System.Object",
+            "IsEnum": false,
+            "IndexerNamePrefix": null,
+            "IndexerTypeName": null,
+            "Documentation": null,
+            "Diagnostics": [],
+            "Metadata": {
+              "Common.PropertyName": "CustomDataParameter"
+            },
+            "BoundAttributeParameters": []
+          },
+          {
+            "Kind": "ITagHelper",
+            "Name": "asp-prerender-timeout",
+            "TypeName": "System.Int32",
+            "IsEnum": false,
+            "IndexerNamePrefix": null,
+            "IndexerTypeName": null,
+            "Documentation": null,
+            "Diagnostics": [],
+            "Metadata": {
+              "Common.PropertyName": "TimeoutMillisecondsParameter"
+            },
+            "BoundAttributeParameters": []
+          }
+        ],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "Microsoft.AspNetCore.SpaServices.Prerendering.PrerenderTagHelper"
+        }
+      },
+      {
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -14361,96 +14513,21 @@
     ],
     "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "Kassablad.Identity",
+  "RootNamespace": "kassablad.auth",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Account\\LoggedOut.cshtml",
-      "TargetPath": "Views\\Account\\LoggedOut.cshtml",
+      "FilePath": "c:\\Users\\ruben\\OneDrive\\Documents\\Code\\kassablad\\kassablad.auth\\Pages\\Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Device\\Success.cshtml",
-      "TargetPath": "Views\\Device\\Success.cshtml",
+      "FilePath": "c:\\Users\\ruben\\OneDrive\\Documents\\Code\\kassablad\\kassablad.auth\\Pages\\Shared\\_LoginPartial.cshtml",
+      "TargetPath": "Pages\\Shared\\_LoginPartial.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Device\\UserCodeConfirmation.cshtml",
-      "TargetPath": "Views\\Device\\UserCodeConfirmation.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Account\\Login.cshtml",
-      "TargetPath": "Views\\Account\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Account\\AccessDenied.cshtml",
-      "TargetPath": "Views\\Account\\AccessDenied.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Diagnostics\\Index.cshtml",
-      "TargetPath": "Views\\Diagnostics\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Device\\UserCodeCapture.cshtml",
-      "TargetPath": "Views\\Device\\UserCodeCapture.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Grants\\Index.cshtml",
-      "TargetPath": "Views\\Grants\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Shared\\_ScopeListItem.cshtml",
-      "TargetPath": "Views\\Shared\\_ScopeListItem.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Shared\\Redirect.cshtml",
-      "TargetPath": "Views\\Shared\\Redirect.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Shared\\_ValidationSummary.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationSummary.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Account\\Logout.cshtml",
-      "TargetPath": "Views\\Account\\Logout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.Identity\\Views\\Consent\\Index.cshtml",
-      "TargetPath": "Views\\Consent\\Index.cshtml",
+      "FilePath": "c:\\Users\\ruben\\OneDrive\\Documents\\Code\\kassablad\\kassablad.auth\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Pages\\_ViewImports.cshtml",
       "FileKind": "mvc"
     }
   ],

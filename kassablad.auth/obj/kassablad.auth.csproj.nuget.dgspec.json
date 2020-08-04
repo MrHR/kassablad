@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ruben\\code\\kassablad\\kassablad.identity\\Kassablad.Identity.csproj": {}
+    "c:\\Users\\ruben\\OneDrive\\Documents\\Code\\kassablad\\kassablad.auth\\kassablad.auth.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ruben\\code\\kassablad\\kassablad.identity\\Kassablad.Identity.csproj": {
+    "c:\\Users\\ruben\\OneDrive\\Documents\\Code\\kassablad\\kassablad.auth\\kassablad.auth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ruben\\code\\kassablad\\kassablad.identity\\Kassablad.Identity.csproj",
-        "projectName": "Kassablad.Identity",
-        "projectPath": "C:\\Users\\ruben\\code\\kassablad\\kassablad.identity\\Kassablad.Identity.csproj",
+        "projectUniqueName": "c:\\Users\\ruben\\OneDrive\\Documents\\Code\\kassablad\\kassablad.auth\\kassablad.auth.csproj",
+        "projectName": "kassablad.auth",
+        "projectPath": "c:\\Users\\ruben\\OneDrive\\Documents\\Code\\kassablad\\kassablad.auth\\kassablad.auth.csproj",
         "packagesPath": "C:\\Users\\ruben\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ruben\\code\\kassablad\\kassablad.identity\\obj\\",
+        "outputPath": "c:\\Users\\ruben\\OneDrive\\Documents\\Code\\kassablad\\kassablad.auth\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ruben\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -36,25 +36,37 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
-            "IdentityServer4": {
+            "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.SpaServices.Extensions": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
               "version": "[3.0.1, )"
             },
-            "Serilog": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[2.9.0, )"
+              "version": "[3.0.1, )"
             },
-            "Serilog.AspNetCore": {
+            "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "Serilog.Sinks.Console": {
-              "target": "Package",
-              "version": "[3.1.1, )"
-            },
-            "Serilog.Sinks.File": {
-              "target": "Package",
-              "version": "[4.0.0, )"
+              "version": "[3.0.1, )"
             }
           },
           "imports": [
