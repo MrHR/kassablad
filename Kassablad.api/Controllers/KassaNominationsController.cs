@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
 using Kassablad.api.Data;
 using Kassablad.api.Models;
 
@@ -13,8 +12,7 @@ namespace Kassablad.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    // [Authorize]
-    public class KassaNominationsController : Controller
+    public class KassaNominationsController : ControllerBase
     {
         private readonly KassabladContext _context;
 
@@ -23,130 +21,91 @@ namespace Kassablad.api.Controllers
             _context = context;
         }
 
-        // GET: KassaNominations
-        public async Task<IActionResult> Index()
+        // GET: api/KassaNominations
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<KassaNomination>>> GetKassaNomination()
         {
-            return View(await _context.KassaNomination.ToListAsync());
+            return await _context.KassaNomination.ToListAsync();
         }
 
-        // GET: KassaNominations/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: api/KassaNominations/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<KassaNomination>> GetKassaNomination(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var kassaNomination = await _context.KassaNomination
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (kassaNomination == null)
-            {
-                return NotFound();
-            }
-
-            return View(kassaNomination);
-        }
-
-        // GET: KassaNominations/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: KassaNominations/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Active,DateAdded,DateUpdated,UpdatedBy,CreatedBy,KassaId,NominationId,Amount")] KassaNomination kassaNomination)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(kassaNomination);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(kassaNomination);
-        }
-
-        // GET: KassaNominations/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var kassaNomination = await _context.KassaNomination.FindAsync(id);
+
             if (kassaNomination == null)
             {
                 return NotFound();
             }
-            return View(kassaNomination);
+
+            return kassaNomination;
         }
 
-        // POST: KassaNominations/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Active,DateAdded,DateUpdated,UpdatedBy,CreatedBy,KassaId,NominationId,Amount")] KassaNomination kassaNomination)
+        // PUT: api/KassaNominations/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutKassaNomination(int id, KassaNomination kassaNomination)
         {
             if (id != kassaNomination.Id)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            if (ModelState.IsValid)
+            _context.Entry(kassaNomination).State = EntityState.Modified;
+
+            try
             {
-                try
-                {
-                    _context.Update(kassaNomination);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!KassaNominationExists(kassaNomination.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                await _context.SaveChangesAsync();
             }
-            return View(kassaNomination);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!KassaNominationExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        // GET: KassaNominations/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // POST: api/KassaNominations
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPost]
+        public async Task<ActionResult<KassaNomination>> PostKassaNomination(KassaNomination kassaNomination)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            kassaNomination.Active = true;
+            kassaNomination.DateAdded = DateTime.Now;
+            kassaNomination.DateUpdated = DateTime.Now;
+            kassaNomination.CreatedBy = 1; //TODO: swap 1 for UserId
+            kassaNomination.UpdatedBy = 1;
 
-            var kassaNomination = await _context.KassaNomination
-                .FirstOrDefaultAsync(m => m.Id == id);
+            _context.KassaNomination.Add(kassaNomination);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetKassaNomination", new { id = kassaNomination.Id }, kassaNomination);
+        }
+
+        // DELETE: api/KassaNominations/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<KassaNomination>> DeleteKassaNomination(int id)
+        {
+            var kassaNomination = await _context.KassaNomination.FindAsync(id);
             if (kassaNomination == null)
             {
                 return NotFound();
             }
 
-            return View(kassaNomination);
-        }
-
-        // POST: KassaNominations/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var kassaNomination = await _context.KassaNomination.FindAsync(id);
             _context.KassaNomination.Remove(kassaNomination);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return kassaNomination;
         }
 
         private bool KassaNominationExists(int id)

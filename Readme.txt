@@ -1,7 +1,7 @@
 run this command to run html on localhost: python -m SimpleHTTPServer
 command http server kassablad.front_02 : http-server -p 8000
 
-- Run this command to scaffold Controller: dotnet aspnet-codegenerator controller -name KassaNominationsController -m KassaNomination -dc KassabladContext --relativeFolderPath Controllers -udl --referenceScriptLibraries;
+- Run this command to scaffold Controller: dotnet aspnet-codegenerator controller -name KassaNominationsController -api -async -m KassaNomination -dc KassabladContext --relativeFolderPath Controllers
 
 - To remove fields from table: 
 	1) remove db file
