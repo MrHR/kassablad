@@ -10,5 +10,7 @@ namespace Kassablad.api.Models {
         public int CreatedBy { get; set; }
         public string Nomination { get; set; }
         public decimal Multiplier { get; set; }
+        public int DefaultAmount { get; set; }
+        public string Total { get; set; }
     }
 }

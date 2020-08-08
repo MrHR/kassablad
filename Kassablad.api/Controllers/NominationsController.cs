@@ -44,6 +44,19 @@ namespace Kassablad.api.Controllers
             return Nomination;
         }
 
+        // GET: api/beginnominations/beginning
+        [HttpGet("{type}")]
+        public async Task<ActionResult<IEnumerable<KassaNomination>>> GetNominations(string type)
+        {
+            var objKassa = await _context.KassaContainer
+                .Join(_context.Kassa,
+                    container => container.Id,
+                    kassa => kassa.KassaContainerId,
+                    (container, kassa) => new { Container = container, Kassa = kassa})
+                .LastAsync();
+            return await _context.KassaNomination.Where(x => x.KassaId == objKassa.Kassa.Id).ToListAsync();
+        }
+
         // PUT: api/Nomination/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.

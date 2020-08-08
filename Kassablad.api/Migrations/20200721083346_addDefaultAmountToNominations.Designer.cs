@@ -3,14 +3,16 @@ using System;
 using Kassablad.api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Kassablad.api.Migrations
 {
     [DbContext(typeof(KassabladContext))]
-    partial class KassabladContextModelSnapshot : ModelSnapshot
+    [Migration("20200721083346_addDefaultAmountToNominations")]
+    partial class addDefaultAmountToNominations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -260,9 +262,6 @@ namespace Kassablad.api.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nomination")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Total")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UpdatedBy")
