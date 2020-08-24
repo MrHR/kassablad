@@ -17,13 +17,13 @@
           "C:\\Users\\ruben\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.0": {
+          "netcoreapp3.1": {
             "projectReferences": {}
           }
         },
@@ -34,7 +34,7 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.0": {
+        "netcoreapp3.1": {
           "dependencies": {
             "IdentityServer4": {
               "target": "Package",
@@ -67,24 +67,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x86",
-              "version": "[3.0.3, 3.0.3]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -93,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
