@@ -23,6 +23,7 @@ namespace Kassablad.api.Controllers
             _context = context;
         }
 
+        //TODO: make this into stored procedure once no more sqlite
         public async Task<List<NomValues>> GetNomValues() {
             var nomValuesList = _context.KassaNomination
                 .Join(_context.Nominations,
