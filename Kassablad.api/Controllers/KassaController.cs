@@ -25,9 +25,36 @@ namespace Kassablad.api.Controllers
 
         // GET: api/Kassa
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Kassa>>> GetKassa()
+        public async Task<ActionResult<IEnumerable<KassaItem>>> GetKassa(string startDate = "", string endDate = "")
         {
-            return await _context.Kassa.ToListAsync();
+            var kassaList = new List<KassaItem>();
+            var StartDate = (startDate != "" && startDate != "undefined") ? Convert.ToDateTime(startDate) : DateTime.Now.AddMonths(-4);
+            var EndDate = (endDate != "" && endDate != "undefined") ? Convert.ToDateTime(endDate) : DateTime.Now;
+            
+            kassaList = await _context.Kassa
+                .Join(_context.KassaContainer,
+                    kassa => kassa.KassaContainerId,
+                    container => container.Id,
+                    (kassa, container) => new { Kassa = kassa, Container = container }
+                ).Where(
+                    x => StartDate == null || (StartDate != null && x.Container.BeginUur >= StartDate) 
+                    && EndDate == null || (EndDate != null && x.Container.BeginUur <= EndDate)
+                ).Select(x => new KassaItem {
+                    CreatedBy = x.Kassa.CreatedBy,
+                    DateAdded = x.Kassa.DateAdded,
+                    DateUpdated = x.Kassa.DateUpdated,
+                    KassaContainerId = x.Kassa.KassaContainerId,
+                    Type = x.Kassa.Type,
+                    Id = x.Kassa.Id,
+                    Active = x.Kassa.Active,
+                    UpdatedBy = x.Kassa.UpdatedBy,
+                    NaamTapper = x.Container.NaamTapper,
+                    NaamTapperSluit = x.Container.NaamTapperSluit,
+                    BeginUur = x.Container.BeginUur,
+                    EindUur = x.Container.EindUur
+                }).ToListAsync();
+
+            return kassaList;
         }
 
         // GET: api/Kassa/5
@@ -113,6 +140,23 @@ namespace Kassablad.api.Controllers
         private bool KassaExists(int id)
         {
             return _context.Kassa.Any(e => e.Id == id);
+        }
+
+        public class KassaItem {
+            public int Id { get; set; }
+            public bool Active { get; set; }
+            public int CreatedBy { get; set; }
+            public DateTime DateAdded { get; set; }
+            public DateTime DateUpdated { get; set; }
+            public int KassaContainerId { get; set; }
+            public string Type { get; set; }
+            public int UpdatedBy { get; set; }
+            public string UserName { get; set; }
+            public string NaamTapper { get; set; }
+            public string Activity { get; set; }
+            public string NaamTapperSluit { get; set; }
+            public DateTime BeginUur { get; set; }
+            public DateTime EindUur { get; set; }
         }
     }
 }
