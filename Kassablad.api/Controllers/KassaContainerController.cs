@@ -27,12 +27,33 @@ namespace Kassablad.api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<KassaContainer>>> GetKassaContainer()
         {
-            return await GetKassaContainerObjectQuery().OrderByDescending(x => x.BeginUur).ToListAsync();
+            return await _context.KassaContainer.ToListAsync();
         }
 
+        [HttpGet]
+        [Route("~/api/[controller]/ext")]
+        public async Task<ActionResult<IEnumerable<ObjKassaContainer>>> GetKassaContainerExt()
+        {
+            return await GetKassaContainerObjectQuery().OrderByDescending(x => x.BeginUur).ToListAsync();
+        }
         // GET: api/KassaContainer/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ObjKassaContainer>> GetKassaContainer(int id)
+        public async Task<ActionResult<KassaContainer>> GetKassaContainer(int id)
+        {
+            var kassaContainer = await _context.KassaContainer.FindAsync(id);
+
+            if (kassaContainer == null)
+            {
+                return NotFound();
+            }
+
+            return kassaContainer;
+        }
+
+        // GET: api/KassaContainer/ext/5
+        [HttpGet]
+        [Route("~/api/[controller]/ext/{id}")]
+        public async Task<ActionResult<ObjKassaContainer>> GetKassaContainerExt(int id)
         {
             var kassaContainer = await GetKassaContainerObjectQuery(id).FirstOrDefaultAsync();
             
@@ -117,7 +138,7 @@ namespace Kassablad.api.Controllers
         {
             return _context.KassaContainer.Any(e => e.Id == id);
         }
-        public IQueryable<ObjKassaContainer> GetKassaContainerObjectQuery(int id = 0) 
+        private IQueryable<ObjKassaContainer> GetKassaContainerObjectQuery(int id = 0) 
         {
             var objKassaContainerQuery = from kc in _context.KassaContainer
                 from bk in _context.Kassa 
@@ -189,7 +210,7 @@ namespace Kassablad.api.Controllers
         }
 
         //TODO: Check if I can seperate out the long query in GetKassaContainerObjectQuery(Not working)
-        public IQueryable<ObjNomination> GetKassaNominationsQuery(int id = 0) 
+        private IQueryable<ObjNomination> GetKassaNominationsQuery(int id = 0) 
         {
             var objKassaNominationsQuery = from kn in _context.KassaNomination
                 from n in _context.Nominations
