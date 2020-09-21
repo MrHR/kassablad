@@ -44,6 +44,13 @@ namespace Kassablad.api.Controllers
             return consumptieCount;
         }
 
+        [HttpGet]
+        [Route("~/api/[controller]/container/{containerid}")]
+        public async Task<ActionResult<IEnumerable<ConsumptieCount>>> GetContainerConsumptieCounts(int containerid)
+        {
+            return await _context.ConsumptieCount.Where(x => x.KassaContainerId == containerid).ToListAsync();
+        }
+
         // PUT: api/ConsumptieCount/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
