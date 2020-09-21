@@ -676,7 +676,6 @@ C:\Users\ruben\documents\code\kassablad\kassablad.api\obj\Debug\netcoreapp3.1\Ka
 C:\Users\ruben\documents\code\kassablad\kassablad.api\obj\Debug\netcoreapp3.1\Kassablad.api.genruntimeconfig.cache
 C:\Users\ruben\code\kassablad\kassablad.api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\ruben\code\kassablad\kassablad.api\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\ruben\code\kassablad\kassablad.api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\ruben\code\kassablad\kassablad.api\bin\Debug\netcoreapp3.1\Kassablad.api.StaticWebAssets.xml
 C:\Users\ruben\code\kassablad\kassablad.api\bin\Debug\netcoreapp3.1\Kassablad.api.exe
 C:\Users\ruben\code\kassablad\kassablad.api\bin\Debug\netcoreapp3.1\Kassablad.api.deps.json

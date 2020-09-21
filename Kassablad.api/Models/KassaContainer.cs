@@ -9,6 +9,7 @@ namespace Kassablad.api.Models {
         public int UpdatedBy { get; set; }
         public int CreatedBy { get; set; }
         public string NaamTapper { get; set; }
+        public string Activiteit { get; set; }
         public DateTime BeginUur { get; set; }
         public DateTime EindUur { get; set; }
         public string Notes { get; set; }

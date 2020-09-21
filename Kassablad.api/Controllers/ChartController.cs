@@ -17,6 +17,8 @@ namespace Kassablad.api.Controllers
     public class ChartController : ControllerBase
     {
         private readonly KassabladContext _context;
+        private readonly double barWidthPercentage = 0.7;
+        private readonly double lineTensionPercentage = 0.3;
 
         public ChartController(KassabladContext context)
         {
@@ -114,15 +116,16 @@ namespace Kassablad.api.Controllers
                 profitChart.Labels.Add(label);
             });
 
+            //Dagwinst
             profitChart.Datasets.Add(new Dataset() {
                 label = "Dagwinst",
                 data = kassaVerschillen.Select(x => x.Difference).ToList(),
                 // backgroundColor = kassaVerschillen.Select(x => "rgba(24, 144, 255, 1)").ToList(),
-                lineTension = 0.3,
+                lineTension = lineTensionPercentage,
                 borderColor = "rgba(24, 144, 255, 1)",
                 fill = "origin",
                 backgroundColor = "rgba(24, 144, 255, 1)",
-                barPercentage = 0.3
+                barPercentage = barWidthPercentage
                 // fillColor = "rgba(24, 144, 255, 1)",
                 // fillBetweenSet = 1,
                 // fillBetweenColor = "rgba(24, 144, 255, 1)"
@@ -141,7 +144,6 @@ namespace Kassablad.api.Controllers
             var StartDate = (startDate != "" && startDate != "undefined") ? Convert.ToDateTime(startDate) : DateTime.Now.AddMonths(-1);
             var EndDate = (endDate != "" && endDate != "undefined") ? Convert.ToDateTime(endDate) : DateTime.Now;
             var nomValues = await GetNomValues();
-
             var endKassas = nomValues
             .Where(x => x.KassaType == "end")
             .GroupBy(x => x.KassaId)
@@ -192,22 +194,22 @@ namespace Kassablad.api.Controllers
             profitChart.Datasets.Add(new Dataset() {
                 label="Beginkassa",
                 data = beginKassas.Select(x => x.Total).ToList(),
-                lineTension = 0.3,
+                lineTension = lineTensionPercentage,
                 borderColor = "rgba(242, 99, 123, 1)",
                 fill = "origin",
                 backgroundColor = "rgba(242, 99, 123, 1)",
-                barPercentage = 0.3
+                barPercentage = barWidthPercentage
             });
 
             //Eindkassa
             profitChart.Datasets.Add(new Dataset() {
                 label="Eindkassa",
                 data = endKassas.Select(x => x.Total).ToList(),
-                lineTension = 0.3,
+                lineTension = lineTensionPercentage,
                 borderColor = "rgba(24, 144, 255, 1)",
                 fill = "origin",
                 backgroundColor = "rgba(24, 144, 255, 1)",
-                barPercentage = 0.3
+                barPercentage = barWidthPercentage
             });
 
             return profitChart;

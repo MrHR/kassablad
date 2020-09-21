@@ -36,6 +36,14 @@ namespace Kassablad.api.Controllers
         {
             return await GetKassaContainerObjectQuery().OrderByDescending(x => x.BeginUur).ToListAsync();
         }
+        [HttpGet]
+        [Route("~/api/[controller]/tapper")]
+        public async Task<ActionResult<IEnumerable<KassaContainer>>> GetKassaContainerTapper()
+        {
+            return await _context.KassaContainer
+            .Where(x => x.BeginUur.Date == DateTime.Today)
+            .OrderByDescending(x => x.BeginUur).ToListAsync();
+        }
         // GET: api/KassaContainer/5
         [HttpGet("{id}")]
         public async Task<ActionResult<KassaContainer>> GetKassaContainer(int id)
@@ -47,6 +55,8 @@ namespace Kassablad.api.Controllers
                 return NotFound();
             }
 
+            // kassaContainer.BeginUur = DateTime(kassaContainer.BeginUur).ToString("dd MM YYYY HH:mm");
+
             return kassaContainer;
         }
 
@@ -56,7 +66,53 @@ namespace Kassablad.api.Controllers
         public async Task<ActionResult<ObjKassaContainer>> GetKassaContainerExt(int id)
         {
             var kassaContainer = await GetKassaContainerObjectQuery(id).FirstOrDefaultAsync();
+
+            if (kassaContainer == null)
+            {
+                return NotFound();
+            }
+
+            return kassaContainer;
+        }
+
+        [HttpGet]
+        [Route("~/api/[controller]/tapper/{id}")]
+        public async Task<ActionResult<ObjKassaContainer>> GetKassaContainerTapper(int id)
+        {
+            var kassaContainer = await GetKassaContainerTapperQuery(id).FirstOrDefaultAsync();
             
+            var objEindKassa = (from ek in _context.Kassa
+                where ek.KassaContainerId == kassaContainer.Id && ek.Type == "end"
+                select new ObjKassa {
+                    Active = ek.Active,
+                    Id = ek.Id,
+                    CreatedBy = ek.CreatedBy,
+                    DateAdded = ek.DateAdded,
+                    DateUpdated = ek.DateUpdated,
+                    KassaContainerId = ek.KassaContainerId,
+                    Type = ek.Type,
+                    UpdatedBy = ek.UpdatedBy,
+                    NominationList = (from kn in _context.KassaNomination
+                        from n in _context.Nominations
+                        where kn.KassaId == ek.Id && n.Id == kn.NominationId
+                        select new ObjNomination {
+                            Active = kn.Active,
+                            DateAdded = kn.DateAdded,
+                            DateUpdated = kn.DateUpdated,
+                            CreatedBy = kn.CreatedBy,
+                            UpdatedBy = kn.UpdatedBy,
+                            Id = kn.Id,
+                            NominationId = kn.NominationId,
+                            Amount = kn.Amount,
+                            KassaId = kn.KassaId,
+                            Nomination = n
+                        }).ToList()
+                }).FirstOrDefault();
+
+            if(objEindKassa != null)
+            {
+                kassaContainer.EindKassa = objEindKassa;
+            }
 
             if (kassaContainer == null)
             {
@@ -111,6 +167,8 @@ namespace Kassablad.api.Controllers
             kassaContainer.CreatedBy = 1; //TODO: chaneg user Id's in future to user
             kassaContainer.BeginUur = kassaContainer.BeginUur;
             kassaContainer.NaamTapper = kassaContainer.NaamTapper;
+            kassaContainer.EindUur = kassaContainer.EindUur;
+            kassaContainer.Activiteit = kassaContainer.Activiteit;
 
             _context.KassaContainer.Add(kassaContainer);
             await _context.SaveChangesAsync();
@@ -138,6 +196,57 @@ namespace Kassablad.api.Controllers
         {
             return _context.KassaContainer.Any(e => e.Id == id);
         }
+        private IQueryable<ObjKassaContainer> GetKassaContainerTapperQuery(int id = 0) 
+        {
+            var objKassaContainerQuery = from kc in _context.KassaContainer
+                from bk in _context.Kassa
+                where (id != 0 && kc.Id == id)
+                && bk.KassaContainerId == kc.Id && bk.Type == "begin"
+                select new ObjKassaContainer {
+                    Id = kc.Id,
+                    Active = kc.Active,
+                    Afroomkluis = kc.Afroomkluis,
+                    BeginUur = kc.BeginUur,
+                    EindUur = kc.EindUur,
+                    Bezoekers = kc.Bezoekers,
+                    CreatedBy = kc.CreatedBy,
+                    DateAdded = kc.DateAdded,
+                    DateUpdated = kc.DateUpdated,
+                    InkomstBar = kc.InkomstBar,
+                    InkomstLidkaart = kc.InkomstLidkaart,
+                    NaamTapper = kc.NaamTapper,
+                    NaamTapperSluit = kc.NaamTapperSluit,
+                    Notes = kc.Notes,
+                    UpdatedBy = kc.UpdatedBy,
+                    Activiteit = kc.Activiteit,
+                    BeginKassa = new ObjKassa {
+                        Active = bk.Active,
+                        Id = bk.Id,
+                        CreatedBy = bk.CreatedBy,
+                        DateAdded = bk.DateAdded,
+                        DateUpdated = bk.DateUpdated,
+                        KassaContainerId = bk.KassaContainerId,
+                        Type = bk.Type,
+                        UpdatedBy = bk.UpdatedBy,
+                        NominationList = (from kn in _context.KassaNomination
+                            from n in _context.Nominations
+                            where kn.KassaId == bk.Id && n.Id == kn.NominationId
+                            select new ObjNomination {
+                                Active = kn.Active,
+                                Amount = kn.Amount,
+                                CreatedBy = kn.CreatedBy,
+                                UpdatedBy = kn.UpdatedBy,
+                                DateAdded = kn.DateAdded,
+                                KassaId = kn.KassaId,
+                                Id = kn.Id,
+                                NominationId = kn.NominationId,
+                                Nomination = n
+                            }).OrderBy(x => x.Nomination.Id).ToList()
+                    }
+                };
+
+            return objKassaContainerQuery;
+        }
         private IQueryable<ObjKassaContainer> GetKassaContainerObjectQuery(int id = 0) 
         {
             var objKassaContainerQuery = from kc in _context.KassaContainer
@@ -163,6 +272,7 @@ namespace Kassablad.api.Controllers
                     NaamTapper = kc.NaamTapper,
                     NaamTapperSluit = kc.NaamTapperSluit,
                     Notes = kc.Notes,
+                    Activiteit = kc.Activiteit,
                     UpdatedBy = kc.UpdatedBy,
                     BeginKassa = new ObjKassa {
                         Active = bk.Active,
@@ -177,10 +287,14 @@ namespace Kassablad.api.Controllers
                             from n in _context.Nominations
                             where kn.KassaId == bk.Id && n.Id == kn.NominationId
                             select new ObjNomination {
+                                Active = kn.Active,
+                                Amount = kn.Amount,
+                                CreatedBy = kn.CreatedBy,
+                                UpdatedBy = kn.UpdatedBy,
+                                DateAdded = kn.DateAdded,
+                                KassaId = kn.KassaId,
                                 Id = kn.Id,
                                 NominationId = kn.NominationId,
-                                Amount = kn.Amount,
-                                KassaId = kn.KassaId,
                                 Nomination = n
                             }).OrderBy(x => x.Nomination.Id).ToList()
                     },
@@ -197,10 +311,14 @@ namespace Kassablad.api.Controllers
                             from n in _context.Nominations
                             where kn.KassaId == ek.Id && n.Id == kn.NominationId
                             select new ObjNomination {
+                                Active = kn.Active,
+                                Amount = kn.Amount,
+                                CreatedBy = kn.CreatedBy,
+                                UpdatedBy = kn.UpdatedBy,
+                                DateAdded = kn.DateAdded,
+                                KassaId = kn.KassaId,
                                 Id = kn.Id,
                                 NominationId = kn.NominationId,
-                                Amount = kn.Amount,
-                                KassaId = kn.KassaId,
                                 Nomination = n
                             }).ToList()
                     }
