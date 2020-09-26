@@ -91,7 +91,12 @@ namespace Kassablad.api
                 // this defines a CORS policy called "default"
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("http://localhost:3000", "http://localhost:8000", "http://localhost:8081", "http://localhost:4321")
+                    policy.WithOrigins(
+                            "http://localhost:3000",
+                            "http://localhost:8000",
+                            "http://localhost:8081",
+                            "https://192.168.1.4:3000"
+                        )
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });

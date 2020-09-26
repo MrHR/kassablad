@@ -18,5 +18,6 @@ namespace Kassablad.api.Models {
         public decimal Afroomkluis { get; set; }
         public decimal InkomstBar { get; set; }
         public decimal InkomstLidkaart { get; set; }
+        public bool Concept { get; set; }
     }
 }

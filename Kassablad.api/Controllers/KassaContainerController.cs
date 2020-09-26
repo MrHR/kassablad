@@ -169,6 +169,7 @@ namespace Kassablad.api.Controllers
             kassaContainer.NaamTapper = kassaContainer.NaamTapper;
             kassaContainer.EindUur = kassaContainer.EindUur;
             kassaContainer.Activiteit = kassaContainer.Activiteit;
+            kassaContainer.Concept = true;
 
             _context.KassaContainer.Add(kassaContainer);
             await _context.SaveChangesAsync();
