@@ -848,3 +848,7 @@ C:\Users\ruben\code\kassablad\kassablad.api\obj\Debug\netcoreapp3.1\staticwebass
 C:\Users\ruben\code\kassablad\kassablad.api\obj\Debug\netcoreapp3.1\Kassablad.api.dll
 C:\Users\ruben\code\kassablad\kassablad.api\obj\Debug\netcoreapp3.1\Kassablad.api.pdb
 C:\Users\ruben\code\kassablad\kassablad.api\obj\Debug\netcoreapp3.1\Kassablad.api.genruntimeconfig.cache
+C:\Users\ruben\Code\kassablad\Kassablad.api\bin\Debug\netcoreapp3.1\ClosedXML.dll
+C:\Users\ruben\Code\kassablad\Kassablad.api\bin\Debug\netcoreapp3.1\DocumentFormat.OpenXml.dll
+C:\Users\ruben\Code\kassablad\Kassablad.api\bin\Debug\netcoreapp3.1\ExcelNumberFormat.dll
+C:\Users\ruben\Code\kassablad\Kassablad.api\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
