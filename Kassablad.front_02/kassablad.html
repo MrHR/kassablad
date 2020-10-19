@@ -1,0 +1,301 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>This is the title of the webpage!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="semantic/semantic.min.css" />
+    <!-- <script src="./semantic/semantic.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+  <body>
+    <!--uncomment to see logging results from login-->
+    <!-- <pre id="results"></pre> -->
+    <div class="AccountHeader">
+        <button id="login">Login</button>
+        <button id="logout">Logout</button>
+    </div>
+    <div class="container">
+        <div id="formWrapper_01" class="form">
+            <button id="btnStart" class="ui button btnNext" onclick="jKassablad.nextFormField(event)">Start Dronken Avontuur</button>
+        </div>
+
+        <!--Naam tapper-->
+        <div id="formWrapper_02" class="form" style="display: none;">
+            <h2>Vul je naam in</h2>
+            <form id="form_01" method="POST">
+                <div class="ui input">
+                    <input type="text" name="NaamTapper" placeholder="Naam Tapper" />
+                </div>
+                <button type="button" id="btnNext_02" class="ui button btnNext frmButton" onclick="jKassablad.createKassaContainer(event)">Tel Ducaten in de Schatkist</button>
+            </form>
+        </div>
+
+        <!--Begin Kassa-->
+        <div id="formWrapper_03" class="form" style="display: none;">
+            <h2>Tel ducaten in schatkist</h2>
+            <form id="form_02">
+                <table id="tblProducts" class="ui selectable inverted table">
+                    <tbody>
+                        <tr>
+                            <td>beginkassa</td>
+                            <td>aantal</td>
+                            <td>waarde</td>
+                            <td>totaal</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="100 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="HonderdEuro" /></td>
+                            <td><input type="text" class="price" value="100" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="50 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="VijftigEuro" /></td>
+                            <td><input type="text" class="price" value="50" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="20 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="TwintigEuro" /></td>
+                            <td><input type="text" class="price" value="20" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="10 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="TienEuro" /></td>
+                            <td><input type="text" class="price" value="10" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="5 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="VijfEuro" /></td>
+                            <td><input type="text" class="price" value="5" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="2 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="TweeEuro" /></td>
+                            <td><input type="text" class="price" value="2" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="1 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="EenEuro" /></td>
+                            <td><input type="text" class="price" value="1" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.50 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="VijftigCent" /></td>
+                            <td><input type="text" class="price" value="0.50" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.20 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="TwintigCent" /></td>
+                            <td><input type="text" class="price" value="0.20" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.10 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="TienCent" /></td>
+                            <td><input type="text" class="price" value="0.10" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.05 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="VijfCent" /></td>
+                            <td><input type="text" class="price" value="0.05" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.02 euro" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="TweeCent" /></td>
+                            <td><input type="text" class="price" value="0.02" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm" value="0.01" tabindex="-1"/></td>
+                            <td><input type="text" class="qty" value="0" name="EenCent" /></td>
+                            <td><input type="text" class="price" value="0.01" tabindex="-1"/></td>
+                            <td><input type="text" class="subtot" value="0" tabindex="-1"/></td>
+                        </tr>
+                    </tbody style="max-width:100% !important">
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="price2" value=" totaal" tabindex="-1" /></td>
+                            <td><input type="text" class="grdtot" value="0" name="" /></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button type="button" id="btnNext_03" class="ui button btnNext frmButton" onclick="jKassablad.createBeginKassa(event)">Ducaten Geteld</button>
+            </form>
+        </div>
+
+        <!--Consumpties-->
+        <div id="formWrapper_04" class="form" style="display: none;">
+            <h2>Tel je geconsumeerde brouwsels</h2>
+            <form id="form_03">
+                <div class="ui input">
+                    <input type="text" name="Consumptieblad" placeholder="Consumptie Tappers" />
+                </div>
+                <table id="consumptieTabel" class="ui red table">
+                    <thead>
+                        <tr>
+                            <th>Drinks</th>
+                            <th>aantal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblDrinks">
+                        <!--DRINKS GO HERE-->
+                    </tbody>
+                </table>
+                <table id="consumptieTabelFood" class="ui orange table">
+                    <thead id="tblFoods">
+                        <tr>
+                            <th>Food</th>
+                            <th>aantal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                        <!--FOODS GO HERE-->
+                    </tbody>
+                </table>
+                <button type="button" id="btnNext_04" class="ui button btnNext frmButton" onclick="jKassablad.nextFormField(event)">Tel Verdiende Ducaten in de Schatkist</button>
+            </form>
+        </div>
+
+        <!--Eind Kassa-->
+        <div id="formWrapper_05" class="form" style="display: none;">
+            <h2>Tel je verdiende ducaten</h2>
+            <form id="form_04">
+                <div class="ui input">
+                    <input type="text" name="EindKassa" placeholder="Eindkassa" />
+                </div>
+                <table id="tblProducts" class="ui green table">
+                    <tbody>
+
+                        <tr>
+                            <td>eindkassa</td>
+                            <td>aantal</td>
+                            <td>waarde</td>
+                            <td>totaal</td>
+                        </tr>
+
+
+                        <tr>
+                            <td><input type="text" class="pnm2" value="100 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="HonderdEuro" /></td>
+                            <td><input type="text" class="price2" value="100" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="50 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="VijftigEuro" /></td>
+                            <td><input type="text" class="price2" value="50" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="20 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="TwintigEuro" /></td>
+                            <td><input type="text" class="price2" value="20" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="10 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="TienEuro" /></td>
+                            <td><input type="text" class="price2" value="10" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="5 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="VijfEuro" /></td>
+                            <td><input type="text" class="price2" value="5" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="2 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="TweeEuro" /></td>
+                            <td><input type="text" class="price2" value="2" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="1 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="EenEuro" /></td>
+                            <td><input type="text" class="price2" value="1" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="0.50 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="VijftigCent" /></td>
+                            <td><input type="text" class="price2" value="0.50" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="0.20 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="TwintigCent" /></td>
+                            <td><input type="text" class="price2" value="0.20" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="0.10 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="TienCent" /></td>
+                            <td><input type="text" class="price2" value="0.10" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="0.05 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="VijfCent" /></td>
+                            <td><input type="text" class="price2" value="0.05" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="0.02 euro" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="TweeCent" /></td>
+                            <td><input type="text" class="price2" value="0.02" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0"  tabindex="-1"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="pnm2" value="0.01" tabindex="-1" /></td>
+                            <td><input type="text" class="qty2" value="0" name="EenCent" /></td>
+                            <td><input type="text" class="price2" value="0.01" tabindex="-1" /></td>
+                            <td><input type="text" class="subtot2" value="0" tabindex="-1" /></td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="price2" value=" totaal" tabindex="-1" /></td>
+                            <td><input type="text" class="grdtot2" value="0" name="" tabindex="-1" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="price2" value=" totaal - beginkassa" tabindex="-1"/></td>
+                            <td><input type="text" class="eindtot" value="0" name="" tabindex="-1" /></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button type="button" id="btnNext_05" class="ui button btnNext frmButton" onclick="jKassablad.nextFormField(event)">Einde Dronken Avontuur</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./oidc-client/dist/oidc-client.js"></script>
+    <script src="./js/script.js"></script>
+
+  </body>
+</html>
+
+<script type="text/javascript">
+    $(function () {
+        jLogin.init();
+        jKassaCalulations.calculateKassa();
+    });
+</script>

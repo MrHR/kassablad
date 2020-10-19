@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Kassablad.api/bin/Debug/netcoreapp3.0/Kassablad.api.dll",
+            "program": "${workspaceFolder}/Kassablad.api/bin/Debug/netcoreapp3.1/Kassablad.api.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Kassablad.api",
             "stopAtEntry": false,

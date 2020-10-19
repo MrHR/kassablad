@@ -9,6 +9,7 @@ namespace Kassablad.api.Models {
         public int UpdatedBy { get; set; }
         public int CreatedBy { get; set; }
         public string NaamTapper { get; set; }
+        public string Activiteit { get; set; }
         public DateTime BeginUur { get; set; }
         public DateTime EindUur { get; set; }
         public string Notes { get; set; }
@@ -17,5 +18,6 @@ namespace Kassablad.api.Models {
         public decimal Afroomkluis { get; set; }
         public decimal InkomstBar { get; set; }
         public decimal InkomstLidkaart { get; set; }
+        public bool Concept { get; set; }
     }
 }

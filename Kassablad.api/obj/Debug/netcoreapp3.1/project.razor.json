@@ -14390,6 +14390,62 @@
     "CSharpLanguageVersion": 800
   },
   "RootNamespace": "Kassablad.api",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\KassaNominations\\Index.cshtml",
+      "TargetPath": "Views\\KassaNominations\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\KassaTemplate\\Edit.cshtml",
+      "TargetPath": "Views\\KassaTemplate\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\KassaNominations\\Create.cshtml",
+      "TargetPath": "Views\\KassaNominations\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\KassaNominations\\Details.cshtml",
+      "TargetPath": "Views\\KassaNominations\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\KassaNominations\\Delete.cshtml",
+      "TargetPath": "Views\\KassaNominations\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\KassaTemplate\\Index.cshtml",
+      "TargetPath": "Views\\KassaTemplate\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\KassaNominations\\Edit.cshtml",
+      "TargetPath": "Views\\KassaNominations\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\KassaTemplate\\Details.cshtml",
+      "TargetPath": "Views\\KassaTemplate\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\KassaTemplate\\Create.cshtml",
+      "TargetPath": "Views\\KassaTemplate\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Views\\KassaTemplate\\Delete.cshtml",
+      "TargetPath": "Views\\KassaTemplate\\Delete.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.2"
 }

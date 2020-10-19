@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Kassablad.api.csproj": {}
+    "C:\\Users\\ruben\\code\\kassablad\\kassablad.api\\Kassablad.api.csproj": {}
   },
   "projects": {
-    "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Kassablad.api.csproj": {
+    "C:\\Users\\ruben\\code\\kassablad\\kassablad.api\\Kassablad.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Kassablad.api.csproj",
+        "projectUniqueName": "C:\\Users\\ruben\\code\\kassablad\\kassablad.api\\Kassablad.api.csproj",
         "projectName": "Kassablad.api",
-        "projectPath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Kassablad.api.csproj",
+        "projectPath": "C:\\Users\\ruben\\code\\kassablad\\kassablad.api\\Kassablad.api.csproj",
         "packagesPath": "C:\\Users\\ruben\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\obj\\",
+        "outputPath": "C:\\Users\\ruben\\code\\kassablad\\kassablad.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ruben\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.0": {
-            "targetAlias": "netcoreapp3.0",
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -35,9 +35,33 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.0": {
-          "targetAlias": "netcoreapp3.0",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.95.3, )"
+            },
+            "IdentityServer4.AccessTokenValidation": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "IdentityServer4.AspNetIdentity": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -74,19 +98,11 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.0.1, 3.0.1]"
+              "version": "[3.1.2, 3.1.2]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.0.3, 3.0.3]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
+              "version": "[3.1.7, 3.1.7]"
             }
           ],
           "frameworkReferences": {

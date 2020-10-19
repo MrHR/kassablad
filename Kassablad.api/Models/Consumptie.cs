@@ -5,6 +5,7 @@ namespace Kassablad.api.Models {
         public int Id { get; set; }
         public bool Active { get; set; }
         public DateTime DateAdded { get; set; }
+        public string Type { get; set; }
         public DateTime DateUpdated { get; set; }
         public int CreatedBy { get; set; }
         public int UpdatedBy { get; set; }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Kassablad.api.Data;
 using Kassablad.api.Models;
 
@@ -12,6 +13,7 @@ namespace Kassablad.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    // [Authorize]
     public class ConsumptieCountController : ControllerBase
     {
         private readonly KassabladContext _context;
@@ -42,6 +44,13 @@ namespace Kassablad.api.Controllers
             return consumptieCount;
         }
 
+        [HttpGet]
+        [Route("~/api/[controller]/container/{containerid}")]
+        public async Task<ActionResult<IEnumerable<ConsumptieCount>>> GetContainerConsumptieCounts(int containerid)
+        {
+            return await _context.ConsumptieCount.Where(x => x.KassaContainerId == containerid).ToListAsync();
+        }
+
         // PUT: api/ConsumptieCount/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -52,6 +61,8 @@ namespace Kassablad.api.Controllers
             {
                 return BadRequest();
             }
+
+            consumptieCount.DateUpdated = DateTime.UtcNow;
 
             _context.Entry(consumptieCount).State = EntityState.Modified;
 
@@ -80,6 +91,12 @@ namespace Kassablad.api.Controllers
         [HttpPost]
         public async Task<ActionResult<ConsumptieCount>> PostConsumptieCount(ConsumptieCount consumptieCount)
         {
+            consumptieCount.Active = true;
+            consumptieCount.DateAdded = DateTime.Now;
+            consumptieCount.DateUpdated = DateTime.UtcNow;
+            consumptieCount.CreatedBy = 1; //TODO: user user id instead
+            consumptieCount.UpdatedBy = 1; //TODO: use user id instead
+
             _context.ConsumptieCount.Add(consumptieCount);
             await _context.SaveChangesAsync();
 
