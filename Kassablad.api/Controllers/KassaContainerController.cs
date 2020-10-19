@@ -32,9 +32,23 @@ namespace Kassablad.api.Controllers
 
         [HttpGet]
         [Route("~/api/[controller]/ext")]
-        public async Task<ActionResult<IEnumerable<ObjKassaContainer>>> GetKassaContainerExt()
+        public async Task<ActionResult<IEnumerable<ObjKassaContainer>>> GetKassaContainerExt(string startDate = "", string endDate = "")
         {
-            return await GetKassaContainerObjectQuery().OrderByDescending(x => x.BeginUur).ToListAsync();
+
+            var kassaContainers = await GetKassaContainerObjectQuery()
+                .OrderByDescending(x => x.BeginUur)
+                .ToListAsync();
+             
+            if(startDate != "" && startDate != "undefined" && endDate != "" && endDate != "undefined") 
+            {
+                var StartDate = (startDate != "" && startDate != "undefined") ? Convert.ToDateTime(startDate) : DateTime.Now.AddMonths(-1);
+                var EndDate = (endDate != "" && endDate != "undefined") ? Convert.ToDateTime(endDate) : DateTime.Now;
+                kassaContainers = kassaContainers
+                .Where(x => x.BeginUur >= StartDate && x.BeginUur <= EndDate)
+                .ToList();
+            }
+
+            return kassaContainers;
         }
         [HttpGet]
         [Route("~/api/[controller]/tapper")]
@@ -80,7 +94,6 @@ namespace Kassablad.api.Controllers
         public async Task<ActionResult<ObjKassaContainer>> GetKassaContainerTapper(int id)
         {
             var kassaContainer = await GetKassaContainerTapperQuery(id).FirstOrDefaultAsync();
-            
             var objEindKassa = (from ek in _context.Kassa
                 where ek.KassaContainerId == kassaContainer.Id && ek.Type == "end"
                 select new ObjKassa {
