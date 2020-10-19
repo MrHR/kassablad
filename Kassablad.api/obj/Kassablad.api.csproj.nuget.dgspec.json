@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Kassablad.api.csproj": {}
+    "C:\\Users\\ruben\\code\\kassablad\\kassablad.api\\Kassablad.api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Kassablad.api.csproj": {
+    "C:\\Users\\ruben\\code\\kassablad\\kassablad.api\\Kassablad.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Kassablad.api.csproj",
+        "projectUniqueName": "C:\\Users\\ruben\\code\\kassablad\\kassablad.api\\Kassablad.api.csproj",
         "projectName": "Kassablad.api",
-        "projectPath": "C:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\Kassablad.api.csproj",
+        "projectPath": "C:\\Users\\ruben\\code\\kassablad\\kassablad.api\\Kassablad.api.csproj",
         "packagesPath": "C:\\Users\\ruben\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ruben\\Code\\kassablad\\Kassablad.api\\obj\\",
+        "outputPath": "C:\\Users\\ruben\\code\\kassablad\\kassablad.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ruben\\AppData\\Roaming\\NuGet\\NuGet.Config"

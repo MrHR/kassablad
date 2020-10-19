@@ -94,7 +94,6 @@ namespace Kassablad.api.Controllers
         public async Task<ActionResult<ObjKassaContainer>> GetKassaContainerTapper(int id)
         {
             var kassaContainer = await GetKassaContainerTapperQuery(id).FirstOrDefaultAsync();
-            
             var objEindKassa = (from ek in _context.Kassa
                 where ek.KassaContainerId == kassaContainer.Id && ek.Type == "end"
                 select new ObjKassa {
