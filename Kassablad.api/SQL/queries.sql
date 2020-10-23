@@ -1,4 +1,4 @@
-INSERT INTO consumpties (Active, DateAdded, Type, DateUpdated, CreatedBy, UpdatedBy, Naam, Prijs)
+INSERT INTO consumpite (Active, DateAdded, Type, DateUpdated, CreatedBy, UpdatedBy, Naam, Prijs)
 VALUES (1, '2009-06-15T13:45:30', 'Drink', '2009-06-15T13:45:30', 1, 1, 'Fanta', 1.2),
 (1, '2009-06-15T13:45:30', 'Drink', '2009-06-15T13:45:30', 1, 1, 'Ice Tea', 1.4),
 (1, '2009-06-15T13:45:30', 'Drink', '2009-06-15T13:45:30', 1, 1, 'Stella', 1.2),
