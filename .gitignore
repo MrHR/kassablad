@@ -7,3 +7,5 @@ Kassablad.api/obj/Debug/netcoreapp3.1/Kassablad.api.csprojAssemblyReference.cach
 *.db
 
 *.dll
+
+*.rsa

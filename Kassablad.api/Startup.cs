@@ -80,10 +80,13 @@ namespace Kassablad.api
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options => 
                 {
-                    options.Authority = "http://localhost:5000";
+                    options.Authority = "https://localhost:5001 ";
                     options.RequireHttpsMetadata = false;
-
                     options.Audience = "api1";
+                    // options.TokenValidationParameters = new TokenValidationParameters
+                    // {
+                    //     ValidateAudience = false
+                    // };
                 });
 
             services.AddCors(options =>
@@ -93,6 +96,7 @@ namespace Kassablad.api
                 {
                     policy.WithOrigins(
                             "http://localhost:3000",
+                            "https://localhost:3000",
                             "http://localhost:8000",
                             "http://localhost:8081",
                             "https://192.168.1.4:3000"

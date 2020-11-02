@@ -1,0 +1,6 @@
+/bin
+/.vscode
+/db_backups
+*.db
+*.cache
+*.dll

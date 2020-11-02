@@ -50,11 +50,27 @@ namespace Kassablad.Identity
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
                     RequireClientSecret = false,
-
                     RedirectUris =           { "http://localhost:8000/callback.html" },
                     PostLogoutRedirectUris = { "http://localhost:8000/kassablad.html" },
                     AllowedCorsOrigins =     { "http://localhost:8000" },
-
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
+                    }
+                },
+                //Vue client
+                new Client
+                {
+                    ClientId = "ant-vue",
+                    ClientName = "kassablad.ant-vue",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
+                    RedirectUris =           { "https://localhost:3000/#/callback" },
+                    PostLogoutRedirectUris = { "https://localhost:3000/#/kassablad" },
+                    AllowedCorsOrigins =     { "https://localhost:3000" },
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
