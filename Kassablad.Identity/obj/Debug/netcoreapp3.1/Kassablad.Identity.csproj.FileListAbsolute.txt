@@ -1,4 +1,3 @@
-C:\Users\ruben\code\kassablad\kassablad.identity\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\ruben\code\kassablad\kassablad.identity\bin\Debug\netcoreapp3.1\Kassablad.Identity.exe
 C:\Users\ruben\code\kassablad\kassablad.identity\bin\Debug\netcoreapp3.1\Kassablad.Identity.deps.json
 C:\Users\ruben\code\kassablad\kassablad.identity\bin\Debug\netcoreapp3.1\Kassablad.Identity.runtimeconfig.json
