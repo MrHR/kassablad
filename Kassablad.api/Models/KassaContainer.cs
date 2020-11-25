@@ -19,5 +19,6 @@ namespace Kassablad.api.Models {
         public decimal InkomstBar { get; set; }
         public decimal InkomstLidkaart { get; set; }
         public bool Concept { get; set; }
+        public string FormSection { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Kassablad.api.Data {
         public KassabladContext (DbContextOptions<KassabladContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+            // Database.EnsureCreated(); // This potentially causes errors when updating database
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

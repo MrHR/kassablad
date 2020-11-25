@@ -17,9 +17,9 @@ document.getElementById("api").addEventListener("click", api, false);
 document.getElementById("logout").addEventListener("click", logout, false);
 
 var config = {
-    authority: "http://localhost:5000",
+    authority: "http://localhost:8000",
     client_id: "front_02",
-    redirect_uri: "http://localhost:8000/callback.html",
+    redirect_uri: "http://localhost:3210/callback.html",
     response_type: "code",
     scope:"openid profile api1",
     post_logout_redirect_uri : "http://localhost:8000/index.html",
@@ -43,7 +43,7 @@ function login() {
 
 function api() {
     mgr.getUser().then(function (user) {
-        var url = "https://localhost:5001/identity";
+        var url = "https://localhost:8000/identity";
 
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url);

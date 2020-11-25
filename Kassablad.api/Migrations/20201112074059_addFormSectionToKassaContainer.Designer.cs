@@ -3,14 +3,16 @@ using System;
 using Kassablad.api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Kassablad.api.Migrations
 {
     [DbContext(typeof(KassabladContext))]
-    partial class KassabladContextModelSnapshot : ModelSnapshot
+    [Migration("20201112074059_addFormSectionToKassaContainer")]
+    partial class addFormSectionToKassaContainer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

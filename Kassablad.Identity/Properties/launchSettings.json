@@ -20,7 +20,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DEFAULT_FRONTEND_URI": "https://localhost:5001"
+        "DEFAULT_FRONTEND_URI": "https://localhost:3210"
       },
       "applicationUrl": "http://localhost:8000"
     }

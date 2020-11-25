@@ -50,9 +50,9 @@ namespace Kassablad.Identity
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
                     RequireClientSecret = false,
-                    RedirectUris =           { "http://localhost:8000/callback.html" },
-                    PostLogoutRedirectUris = { "http://localhost:8000/kassablad.html" },
-                    AllowedCorsOrigins =     { "http://localhost:8000" },
+                    RedirectUris =           { "http://localhost:3210/callback.html" },
+                    PostLogoutRedirectUris = { "http://localhost:3210/kassablad.html" },
+                    AllowedCorsOrigins =     { "http://localhost:3210" },
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
@@ -68,8 +68,8 @@ namespace Kassablad.Identity
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
                     RequireClientSecret = false,
-                    RedirectUris =           { "https://localhost:3000/#/callback" },
-                    PostLogoutRedirectUris = { "https://localhost:3000/#/kassablad" },
+                    RedirectUris =           { "https://localhost:3000/callback" },
+                    PostLogoutRedirectUris = { "https://localhost:3000/kassablad" },
                     AllowedCorsOrigins =     { "https://localhost:3000" },
                     AllowedScopes =
                     {

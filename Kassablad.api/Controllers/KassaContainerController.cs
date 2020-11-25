@@ -38,15 +38,11 @@ namespace Kassablad.api.Controllers
             var kassaContainers = await GetKassaContainerObjectQuery()
                 .OrderByDescending(x => x.BeginUur)
                 .ToListAsync();
-             
-            if(startDate != "" && startDate != "undefined" && endDate != "" && endDate != "undefined") 
-            {
-                var StartDate = (startDate != "" && startDate != "undefined") ? Convert.ToDateTime(startDate) : DateTime.Now.AddMonths(-1);
-                var EndDate = (endDate != "" && endDate != "undefined") ? Convert.ToDateTime(endDate) : DateTime.Now;
-                kassaContainers = kassaContainers
-                .Where(x => x.BeginUur >= StartDate && x.BeginUur <= EndDate)
-                .ToList();
-            }
+            var StartDate = (startDate != "" && startDate != "undefined") ? Convert.ToDateTime(startDate) : DateTime.Now.AddMonths(-1);
+            var EndDate = (endDate != "" && endDate != "undefined") ? Convert.ToDateTime(endDate) : DateTime.Now;
+            kassaContainers = kassaContainers
+            .Where(x => x.BeginUur >= StartDate && x.BeginUur <= EndDate)
+            .ToList();
 
             return kassaContainers;
         }
@@ -89,6 +85,7 @@ namespace Kassablad.api.Controllers
             return kassaContainer;
         }
 
+        //GET: api/KassaContainer/tapper/id
         [HttpGet]
         [Route("~/api/[controller]/tapper/{id}")]
         public async Task<ActionResult<ObjKassaContainer>> GetKassaContainerTapper(int id)

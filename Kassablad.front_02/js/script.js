@@ -232,7 +232,7 @@ var jLogin = {
         document.getElementById("logout").addEventListener("click", jLogin.logout, false);
 
         jLogin.config = {
-            authority: "http://localhost:5000",
+            authority: "http://localhost:8080",
             client_id: "front_02",
             redirect_uri: "http://localhost:8000/callback.html",
             response_type: "code",
